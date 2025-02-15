@@ -1,0 +1,330 @@
+/* @font-face {
+    font-family: 'Lato';
+    src: url('fonts/Lato-Light.ttf') format('truetype'); 
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('fonts/Lato-Regular.ttf') format('truetype'); 
+    font-weight: 700;
+    font-style: normal;
+} */
+.lato-light {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+  
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #333;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Lato', sans-serif;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5px 10px;
+}
+
+.transparent-box {
+    width: 200px; /* Adjust width as needed */
+    height: 650px; /* Adjust height as needed */
+    background-color: transparent;
+    border: transparent; /* Optional: Add a border */
+}
+
+/* Default transparent navbar */
+nav {
+    background-color: rgba(51, 51, 51, 0);
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: none;
+    -webkit-transition: background-color 200ms linear, box-shadow 200ms linear;
+    -ms-transition: background-color 200ms linear, box-shadow 200ms linear;
+    transition: background-color 200ms linear, box-shadow 200ms linear;
+}
+
+.nav-scrolled {
+    background-color: rgba(51, 51, 51, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    -webkit-transition: background-color 200ms linear, box-shadow 200ms linear;
+    -ms-transition: background-color 200ms linear, box-shadow 200ms linear;
+    transition: background-color 200ms linear, box-shadow 200ms linear;
+}
+
+nav h1 {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+li {
+    margin-right: 20px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+.hidden-section {
+    display: none;
+}
+a:hover {
+    color: #4E7A5B; 
+}
+.circular-image {
+    width: 200px; 
+    height: 200px; 
+    overflow: hidden;
+    border-radius: 50%; 
+    margin: 0 auto 10px; 
+    justify-content: center;
+}
+
+.circular-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; 
+}
+
+.hero-overlay h1 {
+    margin: 0;
+    font-size: 5em;
+    margin-top: 20px; 
+}
+
+.hero {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0); 
+    color: #fff; 
+    padding-bottom: 30px;
+}
+.hero #hero-content p {
+    color:#000000;
+}
+
+.hero .container {
+    position: relative;
+}
+
+.hero .image-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.hero .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.hero-overlay {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.hero-overlay h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.hero-overlay p {
+    margin: 20px 0 0;
+    font-size: 2.5em;
+    
+}
+.hero-description {
+    color: #000000;
+}
+.hero p {
+    color: #ffffff;
+}
+
+section {
+    border-bottom: 20px;
+}
+
+li {
+    flex: -1 0 50%;
+}
+
+#skills {
+    background-color: rgba(255, 255, 255, 0); 
+    padding: 20px;
+    font-size: 1.25rem;
+    color: white;
+}
+
+#contact {
+    background-color: rgba(255, 255, 255, 0); 
+    font-size: 1.25rem;
+    color: white;
+}
+
+.project {
+    margin-bottom: 40px;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+#projects {
+    background-color: #ffffff; 
+    font-size: 1.25rem;
+    color: black;
+}
+
+.project img {
+    width: 100%; /* Ensure images take up full width of their container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+    object-fit: cover; /* Ensure images cover the entire container */
+    max-height: 500px; /* Adjust this value as needed to control the maximum height of the images */
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.7); 
+    color: #606060;
+    text-align: center;
+    padding: 2px 0;
+    bottom: 0;
+    width: 100%;
+
+}
+
+.image-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px; 
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+.nav-left {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+#navbar.hidden {
+    transform: translateY(-100%);
+}
+
+#about {
+    padding-top: 5px;
+    font-size: 1.25rem;
+    color: rgb(0, 0, 0);
+    background-color: #fff; 
+}
+.nav-right {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+}
+
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-right {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .nav-right.active {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #333;
+        z-index: 1000;
+    }
+
+    .nav-list.active {
+        display: flex;
+    }
+
+    .nav-list li {
+        margin: 10px;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#education-background {
+    background-color: rgba(255, 255, 255, 0); 
+    color: #ffffff;
+    font-size: 1.25rem;
+}
+
+#work-experience {
+    background-color: #fff; 
+    color: #000000;
+    font-size: 1.25rem;
+}
