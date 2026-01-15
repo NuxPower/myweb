@@ -1,166 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of Yohan Lukin Callanta, a Web Developer & Programmer based in the Philippines.">
     <title>Yohan Lukin Callanta - Portfolio</title>
-    <link rel="stylesheet" href="WEBSYS-PROJECTCSS.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="WEBSYS-PROJECT.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <div id="particles-js"></div>
 
-    <nav id="navbar" class="transparent shadow">
-        <div class="container">
-            <div class="nav-left">
-                <a href="#" id="header-link"><h1>Yohan Lukin Callanta</h1></a>
-                <div class="nav-right">
-                    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-                        <ul class="nav-list hidden">
-                            <li class="active"><a href="#about">About</a></li>
-                            <li class="active"><a href="#education-background">Education</a></li>
-                            <li class="active"><a href="#work-experience">Experience</a></li>
-                            <li class="active"><a href="#skills">Skills</a></li>
-                            <li class="active"><a href="#projects">Projects</a></li>
-                            <li class="active"><a href="#contact">Contact</a></li>
-                        </ul>
-                </div>
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="#">
+                    <h1>Yohan Lukin Callanta</h1>
+                </a>
             </div>
+            <div class="menu-toggle">&#9776;</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="container">
-            <div class="image-gallery">
-                <div class="transparent-box"></div> <!-- Transparent Box -->
-            </div>
-            <div class="hero-content">
-                <div class="circular-image">
-                    <img src="received_875844060538503.jpeg" alt="circular-image">
-                </div>    
-                <div class="hero-overlay">
-                    <h1>Yohan Lukin Callanta</h1>
-                </div>
-                <p>Web Developer & Programmer</p>
-            </div>
+        <div class="container hero-content">
+            <img src="assets/images/received_875844060538503.jpeg" alt="Yohan Lukin Callanta" class="profile-img">
+            <h1>Yohan Lukin Callanta</h1>
+            <p>Web Developer & Programmer</p>
+            <a href="#contact" class="cta-btn">Get In Touch</a>
         </div>
     </header>
-    
 
-    <section id="about" class="animated-section">
-        <div class="container">
-            <h2 class="fade-in">About Me</h2>
-            <p class="fade-in">
-                Hello there! I'm Yohan Lukin Callanta, currently 19 years old, an enthusiastic and aspiring web developer and programmer based in Philippines.
-                Ever since I embarked on my journey into the world of coding, I've been passionate about crafting digital experiences
+    <section id="about">
+        <div class="container glass card">
+            <h2 class="section-title">About Me</h2>
+            <p>
+                Hello there! I'm Yohan Lukin Callanta, a 19-year-old enthusiastic and aspiring web developer and
+                programmer based in the Philippines.
+                Ever since I embarked on my journey into the world of coding, I've been passionate about crafting
+                digital experiences
                 and solving problems through innovative and efficient solutions.
             </p>
-    
-            <p class="fade-in">
-                My journey in web development began with a curiosity to understand the intricacies of building for the web. I have
-                been immersed in learning and exploring various technologies, from front-end frameworks like HTML, CSS, and JavaScript. The dynamic nature of programming and the ever-evolving tech landscape
-                fuel my constant desire to enhance my skills and stay up-to-date with the latest trends in the field.
-            </p>
-    
-            <p class="fade-in">
-                Beyond coding, I believe in the power of collaboration and continuous improvement. I am excited about the prospect of
-                contributing to meaningful projects, solving real-world problems, and constantly refining my skills to make a positive
-                impact in the digital realm.
-            </p>
-    
-            <p class="fade-in">
-                Let's connect and explore the endless possibilities of the web together. Feel free to reach out and join me on this
-                exciting journey of growth and creativity!
+            <br>
+            <p>
+                My journey in web development began with a curiosity to understand the intricacies of building for the
+                web. I have
+                been immersed in learning and exploring various technologies, from front-end frameworks like HTML, CSS,
+                and JavaScript.
+                The dynamic nature of programming and the ever-evolving tech landscape fuel my constant desire to
+                enhance my skills and
+                stay up-to-date with the latest trends in the field.
             </p>
         </div>
     </section>
 
-    <section id="education-background" class="animated-section">
+    <section id="education">
         <div class="container">
-            <h2>Education Background</h2>
-            <ul>
-                <li>
+            <h2 class="section-title">Education Background</h2>
+            <div class="grid">
+                <div class="card glass timeline-item">
                     <h3>Bukidnon National High School</h3>
                     <p>Special Program in Sports</p>
-                </li>
-                <li>
+                </div>
+                <div class="card glass timeline-item">
                     <h3>Bukidnon National High School</h3>
                     <p>General Academic Strand</p>
-                </li>
-                <li>
+                </div>
+                <div class="card glass timeline-item">
                     <h3>Central Mindanao University</h3>
                     <p>2nd Year Undergraduate</p>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="work-experience" class="animated-section">
+    <section id="experience">
         <div class="container">
-            <h2>Work Experience</h2>
-            <ul>
-                <li>
+            <h2 class="section-title">Work Experience</h2>
+            <div class="grid">
+                <div class="card glass timeline-item">
                     <h3>CMU Quality Assurance Office</h3>
                     <p>ISO Accreditation</p>
-                </li>
-                <li>
+                </div>
+                <div class="card glass timeline-item">
                     <h3>DepED (Freelance)</h3>
                     <p>Data Analysis and Reporting</p>
-                </li>
-                <li>
+                </div>
+                <div class="card glass timeline-item">
                     <h3>DPWH (Freelance)</h3>
                     <p>Structural and Plumbing Engineering (Assistant)</p>
-                </li>
-            </ul>
-    </section>
-
-    <section id="skills" class="animated-section">
-        <div class="container">
-            <h2>Programming Skills</h2>
-            <ul>
-                <li>HTML5</li>
-                <li>CSS3</li>
-                <li>JavaScript</li>
-                <li>Python</li>
-                <li>Java</li>
-                <li>C/C++</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="projects" class="animated-section">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="project">
-                <img src='Screenshot 2023-12-14 112041.png' alt='Project 1'/>
-                <div id="project-description">
-                    <h3>Project 1</h3>
-                    <p>A simple calculator with chill, anime vibes.</p>
-                </div>
-            </div>
-            <div class="project">
-                <img src="Screenshot 2023-12-15 001406.png" alt="Project 2"/>
-                <div id="project-description">
-                    <h3>Project 2</h3>
-                    <p>Simple Registration Form.</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <section id="contact" class="animated-section">
+    <section id="skills">
         <div class="container">
-            <h2>Contact</h2>
-            <p>Feel free to reach out to me at: nahoynikulcallanta@gmail.com</p>
-        </div>    </section>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-list">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">C/C++</span>
+                <span class="skill-tag">Git/GitHub</span>
+                <span class="skill-tag">Responsive Design</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="grid">
+                <div class="card glass project-card">
+                    <img src="assets/images/Screenshot 2023-12-14 112041.png" alt="Anime Calculator">
+                    <h3>Anime Calculator</h3>
+                    <p>A simple calculator with chill, anime vibes. Features custom clear logic and responsive layout.
+                    </p>
+                </div>
+                <div class="card glass project-card">
+                    <img src="assets/images/Screenshot 2023-12-15 001406.png" alt="Registration Form">
+                    <h3>Registration System</h3>
+                    <p>A simple registration user interface with form validation and clean aesthetics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container glass card" style="text-align: center; max-width: 600px;">
+            <h2 class="section-title">Contact</h2>
+            <p style="margin-bottom: 20px;">Let's connect and explore the endless possibilities of the web together.</p>
+            <a href="mailto:nahoynikulcallanta@gmail.com" class="cta-btn">nahoynikulcallanta@gmail.com</a>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
             <p>&copy; 2023 Yohan Lukin Callanta. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
+
 </html>
