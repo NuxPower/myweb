@@ -8,6 +8,22 @@
         content="Portfolio of Yohan Lukin Callanta, a Web Developer & Programmer based in the Philippines.">
     <title>Yohan Lukin Callanta - Portfolio</title>
 
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yohancallanta.com/">
+    <meta property="og:title" content="Yohan Lukin Callanta - Portfolio">
+    <meta property="og:description"
+        content="Portfolio of Yohan Lukin Callanta, a Web Developer & Programmer based in the Philippines.">
+    <meta property="og:image" content="assets/images/profile.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yohancallanta.com/">
+    <meta property="twitter:title" content="Yohan Lukin Callanta - Portfolio">
+    <meta property="twitter:description"
+        content="Portfolio of Yohan Lukin Callanta, a Web Developer & Programmer based in the Philippines.">
+    <meta property="twitter:image" content="assets/images/profile.jpg">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +46,7 @@
                     <h1>Yohan Lukin Callanta</h1>
                 </a>
             </div>
-            <div class="menu-toggle">&#9776;</div>
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#education">Education</a></li>
@@ -44,7 +60,7 @@
 
     <header class="hero">
         <div class="container hero-content">
-            <img src="assets/images/received_875844060538503.jpeg" alt="Yohan Lukin Callanta" class="profile-img">
+            <img src="assets/images/profile.jpg" alt="Yohan Lukin Callanta" class="profile-img">
             <h1>Yohan Lukin Callanta</h1>
             <p>Web Developer & Programmer</p>
             <a href="#contact" class="cta-btn">Get In Touch</a>
@@ -55,7 +71,7 @@
         <div class="container glass card">
             <h2 class="section-title">About Me</h2>
             <p>
-                Hello there! I'm Yohan Lukin Callanta, a 19-year-old enthusiastic and aspiring web developer and
+                Hello there! I'm Yohan Lukin Callanta, an enthusiastic and aspiring web developer and
                 programmer based in the Philippines.
                 Ever since I embarked on my journey into the world of coding, I've been passionate about crafting
                 digital experiences
@@ -157,7 +173,7 @@
                     <div class="skill-item"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
                     <div class="skill-item">
                         <img src="https://supabase.com/dashboard/img/supabase-logo.svg" alt="Supabase"
-                            style="width: 48px; height: 48px; margin-bottom: 10px;">
+                            class="skill-icon-img">
                         <span>Supabase</span>
                     </div>
                     <div class="skill-item"><i
@@ -165,8 +181,7 @@
                     <div class="skill-item"><i class="devicon-googlecloud-plain colored"></i><span>GCP</span></div>
                     <div class="skill-item"><i class="devicon-vercel-original colored"></i><span>Vercel</span></div>
                     <div class="skill-item">
-                        <img src="assets/images/railway.svg" alt="Railway"
-                            style="width: 48px; height: 48px; margin-bottom: 10px;">
+                        <img src="assets/images/railway.svg" alt="Railway" class="skill-icon-img">
                         <span>Railway</span>
                     </div>
                 </div>
@@ -184,13 +199,11 @@
                     <div class="skill-item"><i class="devicon-linux-plain colored"></i><span>Linux</span></div>
                     <div class="skill-item"><i class="devicon-archlinux-plain colored"></i><span>Arch</span></div>
                     <div class="skill-item">
-                        <img src="assets/images/packet-tracer.png" alt="Packet Tracer"
-                            style="width: 48px; height: 48px; margin-bottom: 10px;">
+                        <img src="assets/images/packet-tracer.png" alt="Packet Tracer" class="skill-icon-img">
                         <span>Packet Tracer</span>
                     </div>
                     <div class="skill-item">
-                        <img src="assets/images/wireshark.svg" alt="Wireshark"
-                            style="width: 48px; height: 48px; margin-bottom: 10px;">
+                        <img src="assets/images/wireshark.svg" alt="Wireshark" class="skill-icon-img">
                         <span>Wireshark</span>
                     </div>
                 </div>
@@ -227,12 +240,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 Yohan Lukin Callanta. All Rights Reserved.</p>
+            <p>&copy; 2026 Yohan Lukin Callanta. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <button id="scroll-to-top" aria-label="Scroll to top">&#8679;</button>
     <script src="assets/js/main.js"></script>
 </body>
 
