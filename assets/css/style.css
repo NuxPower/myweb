@@ -412,3 +412,34 @@ footer {
     background: var(--secondary-color);
     transform: translateY(-3px);
 }
+/* Certificates */
+.certificate-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease;
+}
+
+.certificate-card:hover img {
+    transform: scale(1.02);
+}
+
+.certificate-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+/* Center the certificates grid */
+#certificates .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+#certificates .certificate-card {
+    flex: 1 1 300px;
+    max-width: 400px;
+}
