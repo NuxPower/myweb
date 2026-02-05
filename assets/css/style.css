@@ -3,7 +3,7 @@
     --secondary-color: #a29bfe;
     --accent-color: #00cec9;
     --text-color: #dfe6e9;
-    --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --bg-gradient: linear-gradient(135deg, #000000, #111111, #1a1a1a);
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
     --glass-blur: 10px;
