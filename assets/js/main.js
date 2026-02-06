@@ -2,25 +2,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const menuOverlay = document.querySelector('.menu-overlay');
 
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+    function toggleMenu() {
+        if (menuToggle) menuToggle.classList.toggle('active');
+        if (navLinks) navLinks.classList.toggle('active');
+        if (menuOverlay) menuOverlay.classList.toggle('active');
+        document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
     }
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
-            navLinks.classList.remove('active');
-        }
-    });
+    if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMenu);
+    }
+
+    // Close menu when clicking overlay
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', toggleMenu);
+    }
 
     // Close mobile menu when a link is clicked
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
+            if (navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
         });
+    });
+
+    // Close mobile menu when clicking outside (fallback, though overlay usually catches this)
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 &&
+            navLinks.classList.contains('active') &&
+            !menuToggle.contains(e.target) &&
+            !navLinks.contains(e.target) &&
+            !menuOverlay.contains(e.target)) {
+            toggleMenu();
+        }
     });
 
     // Navbar Scroll Effect
