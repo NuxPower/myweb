@@ -373,16 +373,24 @@
     margin-top: 4px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px),
+(max-height: 700px) {
     .loading-screen {
         flex-direction: column;
         padding: 1.5rem;
     }
 
+    .loading-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+    }
+
     .yorha-console-loading {
         width: 100%;
         height: 250px;
-        margin-bottom: 2rem;
+        margin-bottom: 0;
+        /* margin-bottom handled by gap in wrapper */
     }
 
     .console-body {
