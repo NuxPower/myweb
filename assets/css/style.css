@@ -21,6 +21,7 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100%;
     min-height: 100vh;
 }
 
@@ -246,6 +247,12 @@ nav.scrolled {
     transition: all 0.3s ease;
     border: none;
     box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+    max-width: 100%;
+    word-wrap: break-word;
+    /* Allow wrapping for long words like emails */
+    white-space: normal;
+    /* Allow text to wrap- */
+    text-align: center;
 }
 
 .cta-btn:hover {
