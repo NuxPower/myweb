@@ -348,43 +348,45 @@
     /* Ensure ::after lines up */
 }
 
-/* White flash line helper */
-.crt-element-shutdown::after {
-    content: '';
+/* New Overlay for Flash visibility */
+.crt-overlay {
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: white;
-    transform: translateY(-50%);
-    opacity: 0;
-    animation: crtLine 0.6s ease-out forwards;
     z-index: 10000;
+    pointer-events: none;
+    animation: crtFlash 0.6s ease-out forwards;
 }
 
-@keyframes crtLine {
+@keyframes crtFlash {
     0% {
-        opacity: 0;
         width: 100%;
+        height: 2px;
+        opacity: 1;
     }
 
     40% {
-        opacity: 1;
         width: 100%;
+        height: 2px;
+        opacity: 1;
     }
 
     70% {
-        opacity: 1;
         width: 0%;
-        left: 50%;
+        height: 4px;
+        opacity: 1;
     }
 
     100% {
-        opacity: 0;
         width: 0%;
+        height: 0%;
+        opacity: 0;
     }
 }
+
+
 
 /* Welcome Message Styles */
 .welcome-text {

@@ -124,6 +124,11 @@
             // Must query again or ensure variable is valid
             const wrapper = document.querySelector('.loading-wrapper');
 
+            // Create CRT Flash Overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'crt-overlay';
+            loadingScreen.appendChild(overlay);
+
             if (wrapper) {
                 wrapper.classList.add('crt-element-shutdown');
 
@@ -131,6 +136,8 @@
                 setTimeout(() => {
                     wrapper.style.visibility = 'hidden';
                     wrapper.style.opacity = '0';
+                    // Cleanup overlay
+                    if (overlay.parentNode) overlay.remove();
                 }, 600);
             }
 
