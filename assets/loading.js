@@ -1,6 +1,5 @@
 (function () {
     // --- Configuration ---
-    const fullText = 'SYSTEM INITIALIZING...';
     const typingSpeed = 15;
     const lineDelay = 50;
     const initialLines = [
@@ -29,25 +28,13 @@
 
     // --- Elements ---
     const loadingScreen = document.querySelector('.loading-screen');
-    const loadingWrapper = document.querySelector('.loading-wrapper'); // NEW WRAPPER
+    const loadingWrapper = document.querySelector('.loading-wrapper');
     const consoleBody = document.querySelector('.console-body');
-    const typewriterText = document.querySelector('.typewriter-text');
-    const progressText = document.querySelector('.loading-percentage');
-    const progressRing = document.querySelector('.progress-ring-progress');
 
     if (!loadingScreen) return;
 
     // --- State ---
-    let progress = 0;
-    let targetProgress = 0;
     let consoleLines = [];
-    let isTyping = false;
-    let sequenceComplete = false;
-    let loaded = false;
-
-    let textInterval = null;
-    let smoothProgressInterval = null;
-    let randomLineTimeout = null;
 
     // --- Helper: Parse Text for Colors ---
     function parseText(text) {
@@ -95,7 +82,7 @@
         }
 
         consoleLines.push(line);
-        if (consoleLines.length > 15) {
+        if (consoleLines.length > 50) {
             if (consoleLines[0] && consoleLines[0].parentNode) {
                 consoleLines[0].remove();
             }
@@ -108,7 +95,6 @@
             if (chunk.color) { span.style.color = chunk.color; }
             line.appendChild(span);
             for (const char of chunk.text) {
-                if (loaded) break;
                 span.textContent += char;
                 consoleBody.scrollTop = consoleBody.scrollHeight;
                 await new Promise(r => setTimeout(r, typingSpeed));
@@ -118,125 +104,42 @@
 
     // --- Main Sequence ---
     async function runConsoleSequence() {
-        isTyping = true;
         const totalLines = initialLines.length;
 
         for (let i = 0; i < totalLines; i++) {
             if (!loadingScreen.isConnected) break;
 
             const line = initialLines[i];
-            targetProgress = Math.round(((i + 1) / totalLines) * 100);
-
             await typeLine(line);
             await new Promise(r => setTimeout(r, lineDelay + Math.random() * 50));
         }
 
-        targetProgress = 100;
-        sequenceComplete = true;
-        isTyping = false;
-
         checkCompletion();
-        if (!loaded) startRandomLines();
     }
-
-    // --- Random Lines ---
-    function startRandomLines() {
-        if (loaded) return;
-        const randomLoop = async () => {
-            if (loaded || !loadingScreen.isConnected || loadingScreen.style.display === 'none') return;
-            const randomLines = [
-                '> Monitoring system status...',
-                '> [PING] Server response: 12ms',
-                '> Optimizing render queue...',
-            ];
-            const text = randomLines[Math.floor(Math.random() * randomLines.length)];
-            await typeLine(text);
-            if (!loaded) {
-                randomLineTimeout = setTimeout(randomLoop, 2000 + Math.random() * 1000);
-            }
-        };
-        setTimeout(randomLoop, 1000);
-    }
-
-    // --- Typewriter Effect ---
-    let charIndex = 0;
-    textInterval = setInterval(() => {
-        if (charIndex < fullText.length) {
-            typewriterText.textContent = fullText.slice(0, charIndex + 1);
-            charIndex++;
-        } else {
-            clearInterval(textInterval);
-        }
-    }, 100);
-
-    // --- Progress ---
-    const circle = progressRing;
-    const radius = circle.r.baseVal.value;
-    const circumference = radius * 2 * Math.PI;
-
-    circle.style.strokeDasharray = `${circumference} ${circumference}`;
-    circle.style.strokeDashoffset = circumference;
-
-    function setProgressDisplay(percent) {
-        const offset = circumference - percent / 100 * circumference;
-        circle.style.strokeDashoffset = offset;
-        progressText.textContent = `${Math.round(percent)}%`;
-    }
-
-    smoothProgressInterval = setInterval(() => {
-        if (progress < targetProgress) {
-            const diff = targetProgress - progress;
-            const inc = Math.max(0.5, diff * 0.1);
-            progress += inc;
-            if (progress > targetProgress) progress = targetProgress;
-        } else if (progress > targetProgress) {
-            progress = targetProgress;
-        }
-        setProgressDisplay(progress);
-        if (progress >= 99.5 && sequenceComplete) {
-            clearInterval(smoothProgressInterval);
-            loaded = true;
-            checkCompletion();
-        }
-    }, 20);
 
     // --- Completion ---
-    let completionTriggered = false;
-
     function checkCompletion() {
-        if (completionTriggered) return;
+        // 1. CRT Shutdown for ALL content via wrapper
+        setTimeout(() => {
+            // Must query again or ensure variable is valid
+            const wrapper = document.querySelector('.loading-wrapper');
 
-        if (sequenceComplete && loaded) {
-            completionTriggered = true;
+            if (wrapper) {
+                wrapper.classList.add('crt-element-shutdown');
 
-            if (textInterval) clearInterval(textInterval);
-            if (smoothProgressInterval) clearInterval(smoothProgressInterval);
-            if (randomLineTimeout) clearTimeout(randomLineTimeout);
-
-            setProgressDisplay(100);
-
-            // 1. CRT Shutdown for ALL content via wrapper
-            setTimeout(() => {
-                // Must query again or ensure variable is valid
-                const wrapper = document.querySelector('.loading-wrapper');
-
-                if (wrapper) {
-                    wrapper.classList.add('crt-element-shutdown');
-
-                    // Force Hide Buffer
-                    setTimeout(() => {
-                        wrapper.style.visibility = 'hidden';
-                        wrapper.style.opacity = '0';
-                    }, 600);
-                }
-
-                // 2. Sleep for 2 seconds (Black Screen)
+                // Force Hide Buffer
                 setTimeout(() => {
-                    // 3. Welcome Message
-                    showWelcomeMessage();
-                }, 2000);
-            }, 500);
-        }
+                    wrapper.style.visibility = 'hidden';
+                    wrapper.style.opacity = '0';
+                }, 600);
+            }
+
+            // 2. Sleep for 2 seconds (Black Screen)
+            setTimeout(() => {
+                // 3. Welcome Message
+                showWelcomeMessage();
+            }, 2000);
+        }, 500);
     }
 
     function showWelcomeMessage() {

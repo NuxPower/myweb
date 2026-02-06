@@ -27,11 +27,11 @@
 .loading-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
-    /* Optional cap */
+    height: 100%;
+    /* Fill screen (minus padding) */
     position: relative;
     transform-origin: center center;
 }
@@ -73,56 +73,12 @@
     pointer-events: none;
 }
 
-.loading-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
-    flex: 1;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-    /* Ensure transform origin is center for CRT effect */
-    transform-origin: center center;
-}
 
-.progress-ring-wrapper {
-    position: relative;
-    display: inline-block;
-}
-
-.progress-ring-wrapper::before {
-    content: '';
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    /* Cyan accent border */
-    border: 1px solid rgba(0, 206, 201, 0.2);
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: pulseRing 3s ease-in-out infinite;
-}
-
-@keyframes pulseRing {
-
-    0%,
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.5;
-    }
-
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 0.1;
-    }
-}
 
 /* Console within Loading Screen - Glassmorphism */
 .yorha-console-loading {
-    width: 500px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
     /* Glass effect matching portfolio */
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -166,93 +122,6 @@
     100% {
         transform: translateY(100%);
     }
-}
-
-.progress-ring {
-    filter: drop-shadow(0 0 15px rgba(108, 92, 231, 0.5));
-    position: relative;
-    z-index: 1;
-}
-
-.progress-ring-background {
-    opacity: 0.1;
-    stroke: #ffffff;
-}
-
-.progress-ring-progress {
-    transition: stroke-dashoffset 0.1s linear;
-    stroke: #00cec9;
-    /* Cyan Accent */
-    filter: drop-shadow(0 0 8px rgba(0, 206, 201, 0.8));
-    animation: progressGlow 2s ease-in-out infinite;
-}
-
-@keyframes progressGlow {
-
-    0%,
-    100% {
-        filter: drop-shadow(0 0 8px rgba(0, 206, 201, 0.8));
-    }
-
-    50% {
-        filter: drop-shadow(0 0 12px rgba(0, 206, 201, 1));
-    }
-}
-
-.loading-text {
-    font-size: 1.5rem;
-    color: #a29bfe;
-    /* Secondary Purple */
-    letter-spacing: 0.2em;
-    text-align: center;
-    min-height: 2rem;
-    text-shadow: 0 0 10px rgba(162, 155, 254, 0.4);
-    position: relative;
-    z-index: 1;
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-.typewriter-text {
-    display: inline-block;
-}
-
-.cursor {
-    display: inline-block;
-    animation: blink 1s infinite;
-    margin-left: 0.2rem;
-    color: #00cec9;
-}
-
-@keyframes blink {
-
-    0%,
-    50% {
-        opacity: 1;
-    }
-
-    51%,
-    100% {
-        opacity: 0;
-    }
-}
-
-.loading-percentage {
-    font-size: 1.2rem;
-    color: #ffffff;
-    letter-spacing: 0.1em;
-    font-weight: 600;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-    position: relative;
-    z-index: 1;
-    margin-top: 0.5rem;
-}
-
-.loading-percentage::after {
-    content: '';
-    /* REMOVED % to fix double percentage bug */
-    margin-left: 0.2em;
-    opacity: 0.7;
 }
 
 .console-header {
@@ -388,7 +257,8 @@
 
     .yorha-console-loading {
         width: 100%;
-        height: 250px;
+        height: 100%;
+        /* Full height on mobile too */
         margin-bottom: 0;
         /* margin-bottom handled by gap in wrapper */
     }
