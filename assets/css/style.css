@@ -509,6 +509,7 @@ footer {
     flex: 1 1 300px;
     max-width: 400px;
 }
+
 /* Terminal Loader Animation */
 .under-construction-container {
     display: flex;
@@ -570,9 +571,17 @@ footer {
     position: relative;
 }
 
-.control.close { background-color: #ff5f56; }
-.control.minimize { background-color: #ffbd2e; }
-.control.maximize { background-color: #27c93f; }
+.control.close {
+    background-color: #ff5f56;
+}
+
+.control.minimize {
+    background-color: #ffbd2e;
+}
+
+.control.maximize {
+    background-color: #27c93f;
+}
 
 .terminal-title {
     font-size: 0.8em;
@@ -585,15 +594,25 @@ footer {
     white-space: nowrap;
     overflow: hidden;
     border-right: 0.2em solid #0f0;
-    animation: type 3.5s steps(30, end) infinite alternate, blink 1s step-end infinite;
+    animation: type 3.5s steps(30, end) forwards, blink 1s step-end infinite;
 }
 
 @keyframes type {
-    0% { width: 0; }
-    40% { width: 0; }
-    100% { width: 100%; }
+    0% {
+        width: 0;
+    }
+
+    40% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
 }
 
 @keyframes blink {
-    50% { border-color: transparent; }
+    50% {
+        border-color: transparent;
+    }
 }
