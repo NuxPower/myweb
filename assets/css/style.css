@@ -594,7 +594,7 @@ footer {
     white-space: nowrap;
     overflow: hidden;
     border-right: 0.2em solid #0f0;
-    animation: type 3.5s steps(30, end) forwards, blink 1s step-end infinite;
+    animation: type 3.5s steps(30, end) infinite alternate, step-end infinite;
 }
 
 @keyframes type {
@@ -602,17 +602,7 @@ footer {
         width: 0;
     }
 
-    40% {
-        width: 0;
-    }
-
     100% {
         width: 100%;
-    }
-}
-
-@keyframes blink {
-    50% {
-        border-color: transparent;
     }
 }
