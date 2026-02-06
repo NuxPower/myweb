@@ -25,10 +25,47 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/loading.css">
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-wrapper">
+            <!-- YoRHa Console -->
+            <div class="yorha-console-loading">
+                <div class="console-header">
+                    <div class="console-title">Portfolio Terminal</div>
+                    <div class="console-controls">
+                        <span class="console-dot red"></span>
+                        <span class="console-dot yellow"></span>
+                        <span class="console-dot green"></span>
+                    </div>
+                </div>
+                <div class="console-body">
+                    <div class="console-cursor">_</div>
+                </div>
+            </div>
+
+            <!-- Loading Progress Indicator -->
+            <div class="loading-content">
+                <div class="progress-ring-wrapper">
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle class="progress-ring-background" stroke="#333" stroke-width="4" fill="transparent"
+                            r="40" cx="60" cy="60" />
+                        <circle class="progress-ring-progress" stroke="#ffffff" stroke-width="4" fill="transparent"
+                            r="40" cx="60" cy="60" />
+                    </svg>
+                </div>
+                <div class="loading-text">
+                    <span class="typewriter-text"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <div class="loading-percentage">0</div>
+            </div>
+        </div>
+    </div>
     <div id="particles-js"></div>
 
     <nav>
@@ -299,6 +336,7 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <button id="scroll-to-top" aria-label="Scroll to top">&#8679;</button>
     <script src="assets/js/main.js"></script>
+    <script src="assets/loading.js"></script>
 </body>
 
 </html>
