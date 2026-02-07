@@ -208,4 +208,117 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Certificate Modal
+    const modal = document.getElementById("image-viewer");
+    const modalImg = document.getElementById("full-image");
+    const captionText = document.getElementById("caption");
+    // Use querySelector to find the close span inside the modal
+    const closeBtn = document.querySelector("#image-viewer .close");
+    let activeCard = null; // Store the clicked card to reverse animation
+
+    document.querySelectorAll('.certificate-card').forEach(card => {
+        card.addEventListener('click', function () {
+            const img = this.querySelector('img');
+            const title = this.querySelector('h3').innerText;
+            const desc = this.querySelector('p').innerText;
+            activeCard = this;
+
+            modal.style.display = "flex"; // Use flex to center easily
+            modal.style.alignItems = "center";
+            modal.style.justifyContent = "center";
+            modal.style.flexDirection = "column";
+
+            modalImg.src = img.src;
+            captionText.innerHTML = `<h3>${title}</h3><p>${desc}</p>`;
+
+            // FLIP Animation
+            // 1. First: Get starting position
+            const firstRect = img.getBoundingClientRect();
+
+            // 2. Last: Set final state string but don't show yet (to calculate position)
+            // But we need the modal to be visible to calculate lastRect.
+            // Transparency is already 0 from CSS or previous state? No, we set it below.
+
+            // Ensure no transition during setup
+            modalImg.style.transition = "none";
+            modalImg.style.transform = "none";
+
+            // 3. Invert: Calculate difference
+            const lastRect = modalImg.getBoundingClientRect();
+
+            const deltaX = firstRect.left - lastRect.left;
+            const deltaY = firstRect.top - lastRect.top;
+            const deltaW = firstRect.width / lastRect.width;
+            const deltaH = firstRect.height / lastRect.height;
+
+            // Apply inverted transform to match start position
+            modalImg.style.transformOrigin = "top left";
+            modalImg.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${deltaW}, ${deltaH})`;
+            modalImg.style.opacity = "0.5"; // Start slightly visible to prove it's there
+
+            // FORCE REFLOW
+            modalImg.offsetHeight;
+
+            // 4. Play: Animate to final state
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    modalImg.style.transition = "transform 0.4s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.4s ease";
+                    modalImg.style.transform = "none";
+                    modalImg.style.opacity = "1";
+                    captionText.classList.add('visible');
+                });
+            });
+
+            document.body.style.overflow = "hidden";
+        });
+    });
+
+    function closeModal() {
+        if (!activeCard) {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+            return;
+        }
+
+        const img = activeCard.querySelector('img');
+        const firstRect = img.getBoundingClientRect();
+        const lastRect = modalImg.getBoundingClientRect();
+
+        const deltaX = firstRect.left - lastRect.left;
+        const deltaY = firstRect.top - lastRect.top;
+        const deltaW = firstRect.width / lastRect.width;
+        const deltaH = firstRect.height / lastRect.height;
+
+        modalImg.style.transition = "transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.3s ease";
+        modalImg.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${deltaW}, ${deltaH})`;
+        modalImg.style.opacity = "0";
+        captionText.classList.remove('visible');
+
+        modalImg.addEventListener('transitionend', function () {
+            modal.style.display = "none";
+            document.body.style.overflow = "";
+            modalImg.style.transform = "";
+            modalImg.style.opacity = "";
+            modalImg.style.transition = ""; // Reset transition
+        }, { once: true });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    // Close modal when clicking outside the image
+    window.addEventListener('click', function (event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function (event) {
+        if (event.key === "Escape" && modal.style.display === "flex") {
+            closeModal();
+        }
+    });
 });

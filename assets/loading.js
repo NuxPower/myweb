@@ -47,6 +47,9 @@
 
     if (!loadingScreen) return;
 
+    // Prevent scrolling while loading
+    document.body.style.overflow = 'hidden';
+
     // --- State ---
     let consoleLines = [];
 
@@ -224,6 +227,8 @@
                 // 7. Remove from DOM
                 setTimeout(() => {
                     loadingScreen.style.display = 'none';
+                    // Re-enable scrolling
+                    document.body.style.overflow = '';
                 }, 1500);
             }, 1000); // 1.0s delay allows text to fade before screen fades
         }, 2000); // Read time
