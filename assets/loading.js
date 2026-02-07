@@ -1,29 +1,43 @@
 (function () {
     // --- Configuration ---
-    const typingSpeed = 15;
-    const lineDelay = 50;
-    const initialLines = [
+    const typingSpeed = 25; // Slightly slower for drama
+    const lineDelay = 100;
+
+    // Mix of strings (lines) and numbers (pause in ms)
+    const sequenceConfig = [
         '> Booting Portfolio OS v2.0.26...',
+        500,
         '> Initializing core modules...',
+        200,
         '> [OK] User Interface loaded',
         '> [OK] Glassmorphism Engine active',
+        800, // Dramatic pause before connecting
         '> Connecting to server...',
+        1500, // Long pause for "connection"
         '> Fetching developer profile...',
         '> Subject: Yohan Lukin Callanta',
         '> Role: Software Engineer',
         '> Location: Philippines',
+        500,
         '> Loading skill matrix...',
+        200,
         '> [INFO] Python detected',
         '> [INFO] Vue.js framework ready',
         '> [INFO] React Native module loaded',
+        800,
         '> Compiling project data...',
+        1200, // Compiling takes time
         '> [SUCCESS] Database connection established',
         '> Optimizing assets for retina display...',
         '> Checking system integrity...',
+        500,
         '> 0 vulnerabilities found.',
         '> Establishing secure session...',
+        1000,
         '> [READY] System optimization complete',
+        500,
         '> Launching main interface...',
+        1000 // Final pause before visuals
     ];
 
     // --- Elements ---
@@ -35,6 +49,10 @@
 
     // --- State ---
     let consoleLines = [];
+
+    // Clear initial static cursor since we'll manage it dynamically
+    const staticCursor = consoleBody.querySelector('.console-cursor');
+    if (staticCursor) staticCursor.remove();
 
     // --- Helper: Parse Text for Colors ---
     function parseText(text) {
@@ -74,12 +92,14 @@
 
         const line = document.createElement('div');
         line.className = 'console-line';
-        const cursor = consoleBody.querySelector('.console-cursor');
-        if (cursor && cursor.parentNode === consoleBody) {
-            consoleBody.insertBefore(line, cursor);
-        } else {
-            consoleBody.appendChild(line);
-        }
+
+        // Add active blinking cursor to THIS line
+        const cursor = document.createElement('span');
+        cursor.className = 'console-cursor';
+        cursor.textContent = '|';
+        line.appendChild(cursor);
+
+        consoleBody.appendChild(line);
 
         consoleLines.push(line);
         if (consoleLines.length > 50) {
@@ -90,29 +110,63 @@
         }
 
         const chunks = parseText(text);
+
+        // Scroll to bottom
+        consoleBody.scrollTop = consoleBody.scrollHeight;
+
         for (const chunk of chunks) {
             const span = document.createElement('span');
             if (chunk.color) { span.style.color = chunk.color; }
-            line.appendChild(span);
+
+            // Insert text BEFORE the cursor
+            line.insertBefore(span, cursor);
+
             for (const char of chunk.text) {
                 span.textContent += char;
                 consoleBody.scrollTop = consoleBody.scrollHeight;
                 await new Promise(r => setTimeout(r, typingSpeed));
             }
         }
+
+        // Slight pause at end of line before removing cursor
+        await new Promise(r => setTimeout(r, 100));
+
+        // Remove cursor from this line (it will appear on the next line or stay if it's the last one)
+        // We'll leave it here and only remove it when the NEXT line starts, 
+        // implies we should return the cursor element or handle removal in main loop.
+        // Or simpler: remove it now, and the main loop delay will happen, then next line starts with cursor.
+        // BUT for the "blinking" effect during the pause, we want the cursor to stay.
+
+        return cursor;
     }
 
     // --- Main Sequence ---
     async function runConsoleSequence() {
-        const totalLines = initialLines.length;
+        let previousCursor = null;
 
-        for (let i = 0; i < totalLines; i++) {
+        for (const item of sequenceConfig) {
             if (!loadingScreen.isConnected) break;
 
-            const line = initialLines[i];
-            await typeLine(line);
-            await new Promise(r => setTimeout(r, lineDelay + Math.random() * 50));
+            if (typeof item === 'number') {
+                // It's a pause. The cursor from the previous line should still be blinking there.
+                await new Promise(r => setTimeout(r, item));
+            } else {
+                // It's a text line.
+                // First, remove cursor from previous line if it exists
+                if (previousCursor) {
+                    previousCursor.remove();
+                }
+
+                // Type the new line and get its cursor
+                previousCursor = await typeLine(item);
+
+                // Small delay after finishing typing a line before processing next item
+                await new Promise(r => setTimeout(r, lineDelay));
+            }
         }
+
+        // Sequence finished. Keep the last cursor blinking for a moment?
+        // Or proceed to completion.
 
         checkCompletion();
     }
