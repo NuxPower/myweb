@@ -1,6 +1,6 @@
 (function () {
     // --- Configuration ---
-    const typingSpeed = 25; // Slightly slower for drama
+    const typingSpeed = 8; // Faster terminal typing
     const lineDelay = 100;
 
     // Mix of strings (lines) and numbers (pause in ms)

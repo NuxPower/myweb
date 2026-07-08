@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Certificate Modal
+    // Image Modal
     const modal = document.getElementById("image-viewer");
     const modalImg = document.getElementById("full-image");
     const captionText = document.getElementById("caption");
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.querySelector("#image-viewer .close");
     let activeCard = null; // Store the clicked card to reverse animation
 
-    document.querySelectorAll('.certificate-card').forEach(card => {
+    document.querySelectorAll('.certificate-card, .project-card').forEach(card => {
         card.addEventListener('click', function () {
             const img = this.querySelector('img');
             const title = this.querySelector('h3').innerText;
