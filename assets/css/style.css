@@ -2207,7 +2207,25 @@ section {
     content: '';
     position: absolute;
     inset: 0;
+    z-index: 1;
     background: linear-gradient(to top, rgba(5, 5, 9, 0.94), transparent 55%);
+}
+
+.credential-card.credential-pdf::before {
+    content: 'PDF';
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    padding: 6px 9px;
+    border: 1px solid rgba(56, 217, 213, 0.34);
+    border-radius: 999px;
+    background: rgba(6, 6, 10, 0.74);
+    color: var(--cyan);
+    font-family: ui-monospace, monospace;
+    font-size: 0.54rem;
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(10px);
 }
 
 .credential-card img {
@@ -2480,6 +2498,30 @@ footer {
 #caption p {
     color: var(--muted);
     font-size: 0.82rem;
+}
+
+#caption .modal-document-link {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    margin-top: 14px;
+    padding: 8px 12px;
+    border: 1px solid rgba(56, 217, 213, 0.32);
+    border-radius: 999px;
+    color: var(--cyan);
+    font-family: ui-monospace, monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: border-color 180ms ease, color 180ms ease, transform 180ms var(--ease-out);
+}
+
+#caption .modal-document-link:hover,
+#caption .modal-document-link:focus-visible {
+    border-color: var(--cyan);
+    color: #fff;
+    outline: none;
+    transform: translateY(-2px);
 }
 
 /* Utility interaction states */

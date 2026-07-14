@@ -492,7 +492,19 @@ document.addEventListener('DOMContentLoaded', () => {
         title.textContent = trigger.dataset.title || image.alt;
         const description = document.createElement('p');
         description.textContent = trigger.dataset.description || '';
-        caption.replaceChildren(title, description);
+        const captionContent = [title, description];
+
+        if (trigger.dataset.document) {
+            const documentLink = document.createElement('a');
+            documentLink.className = 'modal-document-link';
+            documentLink.href = trigger.dataset.document;
+            documentLink.target = '_blank';
+            documentLink.rel = 'noreferrer';
+            documentLink.textContent = 'Open original PDF ↗';
+            captionContent.push(documentLink);
+        }
+
+        caption.replaceChildren(...captionContent);
     }
 
     function getGalleryItems(name) {
