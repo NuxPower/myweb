@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateNavigation, { passive: true });
 
     document.querySelectorAll('a[href^="#"]').forEach(link => {
+        if (link.matches('.map-node')) return;
+
         link.addEventListener('click', event => {
             const targetId = link.getAttribute('href');
             if (!targetId || targetId === '#') return;
@@ -104,19 +106,125 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mapField = document.querySelector('.map-field');
 
-    if (mapField && !prefersReducedMotion) {
+    if (mapField) {
+        const depthLayers = [...mapField.querySelectorAll('[data-depth]')];
+        const mapNodes = [...mapField.querySelectorAll('.map-node')];
+        const mapLinks = [...mapField.querySelectorAll('[data-link]')];
+        const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+        let targetX = 0;
+        let targetY = 0;
+        let currentX = 0;
+        let currentY = 0;
+        let animationFrame = null;
+        let selectedNode = null;
+
+        depthLayers.forEach(layer => {
+            const z = Number(layer.dataset.z) || 0;
+            layer.style.setProperty('--layer-z', `${z}px`);
+        });
+
+        function depthIsEnabled() {
+            return !prefersReducedMotion && finePointer.matches && window.innerWidth > 768;
+        }
+
+        function renderDepth() {
+            currentX += (targetX - currentX) * 0.12;
+            currentY += (targetY - currentY) * 0.12;
+
+            mapField.style.setProperty('--camera-x', `${currentY * -2.2}deg`);
+            mapField.style.setProperty('--camera-y', `${currentX * 3}deg`);
+
+            depthLayers.forEach(layer => {
+                const depth = Number(layer.dataset.depth) || 0;
+                layer.style.setProperty('--layer-x', `${currentX * 22 * depth}px`);
+                layer.style.setProperty('--layer-y', `${currentY * 15 * depth}px`);
+            });
+
+            const stillMoving = Math.abs(targetX - currentX) > 0.002
+                || Math.abs(targetY - currentY) > 0.002;
+
+            if (stillMoving) {
+                animationFrame = window.requestAnimationFrame(renderDepth);
+            } else {
+                animationFrame = null;
+            }
+        }
+
+        function queueDepthRender() {
+            if (!animationFrame) animationFrame = window.requestAnimationFrame(renderDepth);
+        }
+
+        function resetDepth() {
+            targetX = 0;
+            targetY = 0;
+            queueDepthRender();
+        }
+
+        function setActiveNode(node) {
+            const key = node?.dataset.node;
+            mapField.classList.toggle('has-active-node', Boolean(key));
+            mapNodes.forEach(item => item.classList.toggle('is-active', item === node));
+            mapLinks.forEach(link => link.classList.toggle('is-active', link.dataset.link === key));
+        }
+
+        function clearActiveNode(force = false) {
+            if (selectedNode && !force) return;
+            setActiveNode(null);
+        }
+
         mapField.addEventListener('pointermove', event => {
-            if (event.pointerType === 'touch') return;
+            if (!depthIsEnabled() || event.pointerType === 'touch') return;
             const bounds = mapField.getBoundingClientRect();
-            const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 14;
-            const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 10;
-            mapField.style.setProperty('--map-x', `${x}px`);
-            mapField.style.setProperty('--map-y', `${y}px`);
+            targetX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+            targetY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+            queueDepthRender();
         });
 
         mapField.addEventListener('pointerleave', () => {
-            mapField.style.setProperty('--map-x', '0px');
-            mapField.style.setProperty('--map-y', '0px');
+            resetDepth();
+            clearActiveNode();
+        });
+
+        mapNodes.forEach(node => {
+            node.addEventListener('pointerenter', () => {
+                if (!selectedNode) setActiveNode(node);
+            });
+            node.addEventListener('pointerleave', () => clearActiveNode());
+            node.addEventListener('focus', () => {
+                if (!selectedNode) setActiveNode(node);
+            });
+            node.addEventListener('blur', () => clearActiveNode());
+            node.addEventListener('click', event => {
+                const target = document.querySelector(node.getAttribute('href'));
+                if (!target) return;
+
+                event.preventDefault();
+                selectedNode = node;
+                setActiveNode(node);
+                node.classList.add('is-selected');
+                mapField.classList.add('is-focusing');
+                const focusDelay = depthIsEnabled() ? 360 : 0;
+                const resetDelay = depthIsEnabled() ? 1150 : 0;
+
+                window.setTimeout(() => {
+                    target.scrollIntoView({
+                        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                        block: 'start'
+                    });
+                }, prefersReducedMotion ? 0 : focusDelay);
+
+                window.setTimeout(() => {
+                    node.classList.remove('is-selected');
+                    mapField.classList.remove('is-focusing');
+                    selectedNode = null;
+                    clearActiveNode(true);
+                    resetDepth();
+                }, prefersReducedMotion ? 0 : resetDelay);
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (!depthIsEnabled()) resetDepth();
         });
     }
 

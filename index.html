@@ -92,39 +92,63 @@
                         <span>portfolio.sys / project network</span>
                         <span class="network-status"><i></i> 05 systems online</span>
                     </div>
-                    <div class="map-field">
-                        <div class="map-orbit orbit-one"></div>
-                        <div class="map-orbit orbit-two"></div>
-                        <div class="map-core" aria-hidden="true">
-                            <span>YLC</span>
-                            <small>system core</small>
-                        </div>
+                    <div class="map-field" data-depth-scene>
+                        <div class="map-scene">
+                            <div class="map-atmosphere atmosphere-back" data-depth="-0.35" data-z="-120"
+                                aria-hidden="true"></div>
+                            <div class="map-atmosphere atmosphere-front" data-depth="1.15" data-z="95"
+                                aria-hidden="true"></div>
 
-                        <a class="map-node node-anibukid" href="#anibukid">
-                            <span class="node-index">01</span>
-                            <strong>ANIBUKID</strong>
-                            <small>Farm operations</small>
-                        </a>
-                        <a class="map-node node-rox" href="#rox">
-                            <span class="node-index">02</span>
-                            <strong>ROX SYSTEMS</strong>
-                            <small>Government ops</small>
-                        </a>
-                        <a class="map-node node-klema" href="#klema">
-                            <span class="node-index">03</span>
-                            <strong>KLEMA</strong>
-                            <small>Climate monitoring</small>
-                        </a>
-                        <a class="map-node node-lucker" href="#lucker">
-                            <span class="node-index">04</span>
-                            <strong>LUCKER</strong>
-                            <small>Smart lockers</small>
-                        </a>
-                        <a class="map-node node-agritrade" href="#agritrade">
-                            <span class="node-index">05</span>
-                            <strong>AGRITRADE</strong>
-                            <small>Marketplace API</small>
-                        </a>
+                            <svg class="map-links" data-depth="0.12" data-z="-18" viewBox="0 0 1000 570"
+                                preserveAspectRatio="none" aria-hidden="true">
+                                <path data-link="anibukid" d="M500 285 C395 230 285 160 165 102"></path>
+                                <path data-link="rox" d="M500 285 C610 220 720 155 835 105"></path>
+                                <path data-link="klema" d="M500 285 C610 340 700 425 790 478"></path>
+                                <path data-link="lucker" d="M500 285 C405 350 315 430 205 485"></path>
+                                <path data-link="agritrade" d="M500 285 C635 280 760 285 905 292"></path>
+                            </svg>
+
+                            <div class="map-orbit orbit-one" data-depth="0.08" data-z="-28"></div>
+                            <div class="map-orbit orbit-two" data-depth="-0.12" data-z="-52"></div>
+                            <div class="map-core" data-depth="0.3" data-z="34" aria-hidden="true">
+                                <span>YLC</span>
+                                <small>system core</small>
+                            </div>
+
+                            <a class="map-node node-anibukid" href="#anibukid" data-node="anibukid"
+                                data-depth="0.82" data-z="72">
+                                <span class="node-index">01</span>
+                                <strong>ANIBUKID</strong>
+                                <small>Farm operations</small>
+                                <span class="node-meta">Laravel · Vue · PostgreSQL</span>
+                            </a>
+                            <a class="map-node node-rox" href="#rox" data-node="rox" data-depth="0.58" data-z="46">
+                                <span class="node-index">02</span>
+                                <strong>ROX SYSTEMS</strong>
+                                <small>Government ops</small>
+                                <span class="node-meta">Laravel · Sximo · MySQL</span>
+                            </a>
+                            <a class="map-node node-klema" href="#klema" data-node="klema" data-depth="0.72" data-z="62">
+                                <span class="node-index">03</span>
+                                <strong>KLEMA</strong>
+                                <small>Climate monitoring</small>
+                                <span class="node-meta">Vue · Capacitor · Laravel</span>
+                            </a>
+                            <a class="map-node node-lucker" href="#lucker" data-node="lucker" data-depth="0.48" data-z="38">
+                                <span class="node-index">04</span>
+                                <strong>LUCKER</strong>
+                                <small>Smart lockers</small>
+                                <span class="node-meta">Flutter · Firebase · QR</span>
+                            </a>
+                            <a class="map-node node-agritrade" href="#agritrade" data-node="agritrade"
+                                data-depth="0.94" data-z="84">
+                                <span class="node-index">05</span>
+                                <strong>AGRITRADE</strong>
+                                <small>Marketplace API</small>
+                                <span class="node-meta">NestJS · PostgreSQL · RBAC</span>
+                            </a>
+                        </div>
+                        <p class="map-instruction" aria-hidden="true">Move to shift camera <i></i> Select a node to focus</p>
                     </div>
                 </div>
 
@@ -233,6 +257,7 @@
                                 </div>
                             </div>
 
+                            <div class="rox-visual-column">
                             <div class="windmill-gallery windmill-rox" data-windmill-gallery>
                                 <div class="windmill-stage">
                                 <button class="windmill-slide" type="button" data-viewer data-gallery="rox"
@@ -275,6 +300,30 @@
                                         <button type="button" data-windmill-next aria-label="Next ROX screen">→</button>
                                     </div>
                                 </div>
+                            </div>
+                            <aside class="rox-scope-panel" aria-label="ROX systems delivery coverage">
+                                <div class="rox-scope-header">
+                                    <p><i></i> Delivery coverage</p>
+                                    <span>03 connected systems</span>
+                                </div>
+                                <div class="rox-scope-list">
+                                    <article>
+                                        <span>01 / Inventory</span>
+                                        <strong>Asset governance</strong>
+                                        <p>Role-scoped records, GAM classifications, reports, exports, and API support.</p>
+                                    </article>
+                                    <article>
+                                        <span>02 / DCP</span>
+                                        <strong>Inventory synchronization</strong>
+                                        <p>Computerization-program assets synchronized with regional inventory workflows.</p>
+                                    </article>
+                                    <article>
+                                        <span>03 / HRIS</span>
+                                        <strong>Employee operations</strong>
+                                        <p>Service records, competencies, training history, and PDS document generation.</p>
+                                    </article>
+                                </div>
+                            </aside>
                             </div>
                         </div>
                     </article>
