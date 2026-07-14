@@ -928,6 +928,44 @@ section {
     aspect-ratio: 16 / 10.5;
 }
 
+.windmill-mobile .windmill-stage {
+    height: 444px;
+    aspect-ratio: auto;
+}
+
+.windmill-mobile .windmill-slide {
+    inset: 4% auto auto 50%;
+    width: auto;
+    height: 90%;
+    aspect-ratio: 853 / 1844;
+    border-radius: 19px;
+    transform: translate(-50%, 16%) scale(0.74);
+}
+
+.windmill-mobile .windmill-slide img {
+    object-fit: cover;
+}
+
+.windmill-mobile .windmill-slide[data-windmill-slot="0"] {
+    transform: translate(-50%, 0) rotate(0) scale(1);
+}
+
+.windmill-mobile .windmill-slide[data-windmill-slot="1"] {
+    transform: translate(-20%, 7%) rotate(8deg) scale(0.91);
+}
+
+.windmill-mobile .windmill-slide[data-windmill-slot="-1"] {
+    transform: translate(-80%, 7%) rotate(-8deg) scale(0.91);
+}
+
+.windmill-mobile .windmill-slide[data-windmill-slot="2"] {
+    transform: translate(10%, 14%) rotate(16deg) scale(0.82);
+}
+
+.windmill-mobile .windmill-slide[data-windmill-slot="-2"] {
+    transform: translate(-110%, 14%) rotate(-16deg) scale(0.82);
+}
+
 .feature-media-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1282,6 +1320,7 @@ section {
     border-radius: 18px 18px 0 0;
     background: #09090e;
     box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+    padding: 0;
     cursor: zoom-in;
     transform-origin: bottom center;
     transition: transform 350ms var(--ease-out), filter 250ms ease;
@@ -1322,52 +1361,6 @@ section {
     right: 13%;
     width: 43%;
     transform: rotate(6deg) translateY(5%);
-}
-
-.five-up .collage-phone {
-    bottom: -5%;
-    width: 34%;
-    height: 86%;
-}
-
-.five-up .collage-home {
-    left: 33%;
-    z-index: 7;
-    transform: translateY(-2%);
-}
-
-.five-up .collage-five-one {
-    left: -3%;
-    z-index: 2;
-    transform: rotate(-10deg) translateY(13%);
-}
-
-.five-up .collage-five-two {
-    left: 15%;
-    z-index: 3;
-    transform: rotate(-5deg) translateY(6%);
-}
-
-.five-up .collage-five-three {
-    left: 33%;
-    z-index: 5;
-}
-
-.five-up .collage-five-four {
-    right: 15%;
-    z-index: 3;
-    transform: rotate(5deg) translateY(6%);
-}
-
-.five-up .collage-five-five {
-    right: -3%;
-    z-index: 2;
-    transform: rotate(10deg) translateY(13%);
-}
-
-.five-up .collage-phone:hover {
-    z-index: 8;
-    transform: translateY(-3%);
 }
 
 .collage-phone:hover {
@@ -1434,6 +1427,8 @@ section {
 }
 
 .archive-media-card {
+    --archive-media-height: 330px;
+    --archive-toolbar-height: 64px;
     min-width: 0;
     overflow: hidden;
     border: 1px solid var(--line);
@@ -1451,7 +1446,7 @@ section {
     position: relative;
     display: block;
     width: 100%;
-    height: 330px;
+    height: var(--archive-media-height);
     overflow: hidden;
     border: 0;
     border-bottom: 1px solid var(--line);
@@ -1514,7 +1509,7 @@ section {
 
 .archive-fade-stage {
     position: relative;
-    height: 330px;
+    height: calc(var(--archive-media-height) - var(--archive-toolbar-height));
     overflow: hidden;
     border-bottom: 1px solid var(--line);
     background: #f5f8f6;
@@ -1560,7 +1555,7 @@ section {
 .archive-fade-toolbar {
     position: relative;
     display: grid;
-    min-height: 64px;
+    min-height: var(--archive-toolbar-height);
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 16px;
@@ -2443,13 +2438,17 @@ footer {
     .phone-visual { height: 460px; }
     .phone-visual img { width: auto; height: 88%; aspect-ratio: auto; }
     .mobile-collage { height: 460px; }
+    .windmill-mobile .windmill-stage { height: 500px; aspect-ratio: auto; }
+    .windmill-mobile .windmill-slide { inset: 7% auto auto 50%; height: 84%; }
 
     .archive-heading { flex-direction: column; }
     .archive-media-grid { grid-template-columns: 1fr; }
-    .archive-media-card > button { height: 260px; }
-    .archive-fade-stage { height: 260px; }
-    .archive-fade-toolbar { grid-template-columns: 1fr; gap: 10px; }
-    .archive-fade-actions { width: 100%; justify-content: space-between; }
+    .archive-media-card { --archive-media-height: 260px; }
+    .archive-fade-toolbar {
+        grid-template-columns: minmax(52px, 1fr) auto;
+        gap: 8px;
+        padding: 8px 10px;
+    }
     .archive-media-phone > button { height: 430px; }
     .archive-list { grid-template-columns: 1fr; }
     .archive-list article { min-height: 175px; }
