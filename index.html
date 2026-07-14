@@ -5,527 +5,868 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Portfolio of Yohan Lukin Callanta, a Web Developer & Programmer based in the Philippines.">
-    <title>Yohan Lukin Callanta - Portfolio</title>
+        content="Portfolio of Yohan Lukin Callanta, a full-stack and cross-platform software developer based in the Philippines.">
+    <meta name="theme-color" content="#06060a">
+    <title>Yohan Lukin Callanta — Software Engineer</title>
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.facebook.com/han.yu.54013">
-    <meta property="og:title" content="Yohan Lukin Callanta - Portfolio">
+    <meta property="og:url" content="https://nuxpower.github.io/myweb/">
+    <meta property="og:title" content="Yohan Lukin Callanta — Software Engineer">
     <meta property="og:description"
-        content="Portfolio of Yohan Lukin Callanta, a Software Engineer based in the Philippines.">
+        content="Full-stack and cross-platform systems for agriculture, government operations, HR, payroll, and mobile workflows.">
     <meta property="og:image" content="assets/images/profile.jpg">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Lato:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-
-    <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/loading.css">
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 
 <body>
     <div class="loading-screen">
-        <div class="loading-wrapper">
-            <div class="yorha-console-loading">
-                <div class="console-header">
-                    <div class="console-title">Portfolio Terminal</div>
-                    <div class="console-controls">
-                        <span class="console-dot red"></span>
-                        <span class="console-dot yellow"></span>
-                        <span class="console-dot green"></span>
-                    </div>
-                </div>
-                <div class="console-body">
-                    <div class="console-cursor">_</div>
-                </div>
-            </div>
+        <div class="loading-wrapper" aria-hidden="true">
+            <div class="crt-screen"></div>
         </div>
     </div>
-    <div id="particles-js"></div>
 
-    <nav>
+    <div id="particles-js" aria-hidden="true"></div>
+    <div class="site-grid" aria-hidden="true"></div>
+
+    <nav aria-label="Primary navigation">
         <div class="container nav-content">
             <div class="logo">
-                <a href="#">
+                <a href="#top" aria-label="Yohan Lukin Callanta, back to top">
                     <h1>Yohan Lukin Callanta</h1>
                 </a>
             </div>
+
             <div class="menu-overlay"></div>
-            <button class="menu-toggle" aria-label="Toggle navigation">
+            <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Work</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#skills">Capabilities</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="hero">
+    <header class="hero" id="top">
         <div class="container hero-content">
             <img src="assets/images/profile.jpg" alt="Yohan Lukin Callanta" class="profile-img">
             <h1>Yohan Lukin Callanta</h1>
             <p>Software Engineer</p>
             <a href="#contact" class="cta-btn">Get In Touch</a>
         </div>
+        <a class="scroll-cue" href="#projects" aria-label="Explore selected work">
+            <span>Explore systems</span>
+            <span class="scroll-cue-line"></span>
+        </a>
     </header>
 
-    <section id="about">
-        <div class="container glass card">
-            <h2 class="section-title">About Me</h2>
-            <p>
-                I am a BS Information Technology graduate specializing in Software Development, focused on building
-                practical full-stack and mobile systems. My work spans Laravel, NestJS, Flutter, Vue, PostgreSQL,
-                MySQL, Firebase, and workflow-heavy applications for agriculture, government inventory, HR, payroll,
-                marketplaces, and internal operations. I like turning real process problems into usable software with
-                clear roles, reliable data, and interfaces people can actually work with.
-            </p>
-            <br>
-            <p>
-                My journey in web development began with a curiosity to understand the intricacies of building for the
-                web. I have
-                been immersed in learning and exploring various technologies, from core web technologies like HTML, CSS,
-                and JavaScript to modern frameworks and backend tools.
-                The dynamic nature of programming and the ever-evolving tech landscape fuel my constant desire to
-                enhance my skills and
-                stay up-to-date with the latest trends in the field.
-            </p>
-        </div>
-    </section>
+    <main>
+        <section id="projects" class="work-section">
+            <div class="container">
+                <div class="section-heading work-heading">
+                    <div>
+                        <p class="section-kicker"><span>01</span> Selected work</p>
+                        <h2>Systems built around<br><em>real workflows.</em></h2>
+                    </div>
+                    <p class="section-intro">
+                        Full-stack and cross-platform software spanning rice farm operations, government assets,
+                        climate monitoring, HR, payroll, and mobile marketplaces.
+                    </p>
+                </div>
 
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education Background</h2>
-            <div class="grid">
-                <div class="card glass timeline-item">
-                    <h3>Bukidnon National High School</h3>
-                    <p>Special Program in Sports</p>
-                </div>
-                <div class="card glass timeline-item">
-                    <h3>Bukidnon National High School</h3>
-                    <p>General Academic Strand</p>
-                </div>
-                <div class="card glass timeline-item">
-                    <h3>Central Mindanao University</h3>
-                    <p>BS Information Technology, Software Development Track</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
-            <div class="grid">
-                <div class="card glass timeline-item">
-                    <h3>CMU Quality Assurance Office</h3>
-                    <p>Video editor and PowerPoint creator for ISO accreditation materials.</p>
-                </div>
-                <div class="card glass timeline-item">
-                    <h3>Department of Education - Region X</h3>
-                    <p>Software development and systems support for inventory, DCP, and HRIS workflows.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-
-            <div class="skill-category">
-                <h3>Languages</h3>
-                <div class="skills-grid">
-                    <div class="skill-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
-                    <div class="skill-item"><i class="devicon-java-plain colored"></i><span>Java</span></div>
-                    <div class="skill-item"><i class="devicon-cplusplus-plain colored"></i><span>C/C++</span></div>
-                    <div class="skill-item"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
-                    <div class="skill-item"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span>
+                <div class="system-map" aria-label="Interactive project map">
+                    <div class="map-toolbar">
+                        <span>portfolio.sys / project network</span>
+                        <span class="network-status"><i></i> 05 systems online</span>
                     </div>
-                    <div class="skill-item"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span>
-                    </div>
-                    <div class="skill-item"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
-                    <div class="skill-item"><i class="devicon-dart-plain colored"></i><span>Dart</span></div>
-                    <div class="skill-item"><i class="devicon-visualbasic-plain colored"></i><span>VB.NET</span></div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Frameworks & Libraries</h3>
-                <div class="skills-grid">
-                    <div class="skill-item"><i class="devicon-vuejs-plain colored"></i><span>Vue</span></div>
-                    <div class="skill-item"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
-                    <div class="skill-item"><i class="devicon-django-plain colored"></i><span>Django</span></div>
-                    <div class="skill-item"><i class="devicon-laravel-plain colored"></i><span>Laravel</span></div>
-                    <div class="skill-item"><i class="devicon-nestjs-plain colored"></i><span>NestJS</span></div>
-                    <div class="skill-item"><i class="devicon-dotnetcore-plain colored"></i><span>.NET</span></div>
-                    <div class="skill-item"><i class="devicon-flutter-plain colored"></i><span>Flutter</span></div>
-                    <div class="skill-item"><i class="devicon-react-original colored"></i><span>React Native</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Databases</h3>
-                <div class="skills-grid">
-                    <div class="skill-item"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span>
-                    </div>
-                    <div class="skill-item"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
-                    <div class="skill-item">
-                        <img src="https://supabase.com/dashboard/img/supabase-logo.svg" alt="Supabase"
-                            class="skill-icon-img">
-                        <span>Supabase</span>
-                    </div>
-                    <div class="skill-item"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
-                    <div class="skill-item"><i class="devicon-mysql-plain colored"></i><span>Workbench</span></div>
-                    <div class="skill-item"><i class="devicon-postgresql-plain colored"></i><span>pgAdmin</span></div>
-                    <div class="skill-item">
-                        <img src="assets/images/navicat-logo.png" alt="Navicat" class="skill-icon-img">
-                        <span>Navicat</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Cloud & DevOps</h3>
-                <div class="skills-grid">
-                    <div class="skill-item"><i
-                            class="devicon-amazonwebservices-plain-wordmark colored"></i><span>AWS</span>
-                    </div>
-                    <div class="skill-item"><i class="devicon-googlecloud-plain colored"></i><span>GCP</span></div>
-                    <div class="skill-item"><i class="devicon-vercel-original colored"></i><span>Vercel</span></div>
-                    <div class="skill-item">
-                        <img src="assets/images/railway.svg" alt="Railway" class="skill-icon-img">
-                        <span>Railway</span>
-                    </div>
-                    <div class="skill-item"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
-                    <div class="skill-item"><i class="devicon-linux-plain colored"></i><span>Linux</span></div>
-                    <div class="skill-item"><i class="devicon-archlinux-plain colored"></i><span>Arch</span></div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3>Tools & Utilities</h3>
-                <div class="skills-grid">
-                    <div class="skill-item"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
-                    <div class="skill-item"><i class="devicon-visualstudio-plain colored"></i><span>Visual Studio</span>
-                    </div>
-                    <div class="skill-item"><i class="devicon-neovim-plain colored"></i><span>Neovim</span></div>
-                    <div class="skill-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
-                    <div class="skill-item">
-                        <img src="assets/images/packet-tracer.png" alt="Packet Tracer" class="skill-icon-img">
-                        <span>Packet Tracer</span>
-                    </div>
-                    <div class="skill-item">
-                        <img src="assets/images/wireshark.svg" alt="Wireshark" class="skill-icon-img">
-                        <span>Wireshark</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <article class="card glass project-card">
-                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/Anibukid dashboard.jpg"
-                        alt="ANIBUKID farm operation dashboard screenshot">
-                    <div class="project-content">
-                        <div class="project-meta">Laravel 12 / Vue 3 / PostgreSQL</div>
-                        <h3>ANIBUKID</h3>
-                        <p>Farm operation management system for rice farmers with field lifecycle tracking, labor and
-                            inventory management, weather analytics, marketplace sales, and financial reporting.</p>
-                        <div class="project-tags">
-                            <span>Capstone</span>
-                            <span>Weather APIs</span>
-                            <span>Marketplace</span>
+                    <div class="map-field">
+                        <div class="map-orbit orbit-one"></div>
+                        <div class="map-orbit orbit-two"></div>
+                        <div class="map-core" aria-hidden="true">
+                            <span>YLC</span>
+                            <small>system core</small>
                         </div>
-                    </div>
-                </article>
 
-                <article class="card glass project-card">
-                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/klema cross platform ios, android, linux, windows.png"
-                        alt="KLEMA cross-platform agriculture monitoring screenshot">
-                    <div class="project-content">
-                        <div class="project-meta">Laravel 12 / Vue 3 / Capacitor</div>
-                        <h3>KLEMA</h3>
-                        <p>Climate-smart agriculture monitoring platform with farm mapping, weather data caching,
-                            automated alerts, recommendations, mobile builds, and dashboard visualizations.</p>
-                        <div class="project-tags">
-                            <span>AgriTech</span>
-                            <span>Maps</span>
-                            <span>Mobile</span>
+                        <a class="map-node node-anibukid" href="#anibukid">
+                            <span class="node-index">01</span>
+                            <strong>ANIBUKID</strong>
+                            <small>Farm operations</small>
+                        </a>
+                        <a class="map-node node-rox" href="#rox">
+                            <span class="node-index">02</span>
+                            <strong>ROX SYSTEMS</strong>
+                            <small>Government ops</small>
+                        </a>
+                        <a class="map-node node-klema" href="#klema">
+                            <span class="node-index">03</span>
+                            <strong>KLEMA</strong>
+                            <small>Climate monitoring</small>
+                        </a>
+                        <a class="map-node node-lucker" href="#lucker">
+                            <span class="node-index">04</span>
+                            <strong>LUCKER</strong>
+                            <small>Smart lockers</small>
+                        </a>
+                        <a class="map-node node-agritrade" href="#agritrade">
+                            <span class="node-index">05</span>
+                            <strong>AGRITRADE</strong>
+                            <small>Marketplace API</small>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="featured-work">
+                    <article class="project-showcase project-primary" id="anibukid">
+                        <div class="project-topline">
+                            <span>01 / Flagship system</span>
+                            <span>Full-stack · 2026</span>
                         </div>
-                    </div>
-                </article>
 
-                <article class="card glass project-card">
-                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/Lucker App.jpg"
-                        alt="Lucker smart locker mobile app screenshot">
-                    <div class="project-content">
-                        <div class="project-meta">Flutter / Firebase / Firestore</div>
-                        <h3>Lucker</h3>
-                        <p>Smart-locker reservation prototype with email and Google authentication, live locker
-                            inventory, time-window booking validation, PIN setup, QR scanning, and in-app notifications.
+                        <div class="windmill-gallery" data-windmill-gallery>
+                            <div class="windmill-stage">
+                            <button class="windmill-slide" type="button" data-viewer data-gallery="anibukid"
+                                data-windmill-label="Authentication"
+                                data-title="ANIBUKID — Authentication Experience"
+                                data-description="The redesigned farm-to-table login experience that introduces the platform before users enter its operational workspace.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/anibukid login  page.png"
+                                    alt="ANIBUKID farm-to-table login page" loading="lazy">
+                            </button>
+                            <button class="windmill-slide" type="button" data-viewer data-gallery="anibukid"
+                                data-windmill-label="Farm dashboard"
+                                data-title="ANIBUKID — Farm Operation Dashboard"
+                                data-description="The operational dashboard connecting fields, crop stages, weather intelligence, labor, inventory, finance, and marketplace activity.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/Anibukid dashboard.jpg"
+                                    alt="ANIBUKID farm operation dashboard" loading="lazy">
+                            </button>
+                            </div>
+                            <div class="windmill-controls">
+                                <div class="windmill-readout">
+                                    <span data-windmill-count>01 / 02</span>
+                                    <strong data-windmill-label-output>Authentication</strong>
+                                </div>
+                                <div class="windmill-actions">
+                                    <button type="button" data-windmill-prev aria-label="Previous ANIBUKID screen">←</button>
+                                    <button type="button" class="windmill-explore" data-gallery-open="anibukid">Explore all</button>
+                                    <button type="button" data-windmill-next aria-label="Next ANIBUKID screen">→</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-story">
+                            <div class="project-title-block">
+                                <p class="project-type">Agricultural operations platform</p>
+                                <h3>ANIBUKID</h3>
+                            </div>
+                            <div class="project-copy">
+                                <p class="project-lead">
+                                    A centralized platform that turns fragmented rice-farming activities into one
+                                    connected operational workflow—from GPS field registration to harvest and sale.
+                                </p>
+                                <p>
+                                    I built the Laravel and Vue system across crop lifecycle tracking, labor and
+                                    inventory, post-harvest processing, financial reporting, and a buyer-facing
+                                    marketplace. Weather services add field-specific forecasts, Growing Degree Day
+                                    calculations, and agronomic threshold alerts.
+                                </p>
+                                <div class="project-facts">
+                                    <div><strong>35</strong><span>domain models</span></div>
+                                    <div><strong>03</strong><span>weather providers</span></div>
+                                    <div><strong>10d</strong><span>forecast horizon</span></div>
+                                </div>
+                                <ul class="tech-list" aria-label="ANIBUKID technology stack">
+                                    <li>Laravel 12</li>
+                                    <li>Vue 3</li>
+                                    <li>PostgreSQL</li>
+                                    <li>Docker</li>
+                                    <li>Leaflet</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-showcase project-reverse" id="rox">
+                        <div class="project-topline">
+                            <span>02 / Government systems</span>
+                            <span>DepEd Regional Office 10</span>
+                        </div>
+
+                        <div class="project-split">
+                            <div class="project-story compact-story">
+                                <div class="project-title-block">
+                                    <p class="project-type">Property, DCP, and HR workflows</p>
+                                    <h3>ROX<br>Systems</h3>
+                                </div>
+                                <div class="project-copy">
+                                    <p class="project-lead">
+                                        Maintained and extended interconnected government platforms while working
+                                        inside established Laravel, Sximo, and MySQL codebases.
+                                    </p>
+                                    <p>
+                                        The work covered role-scoped property records, Government Accounting Manual
+                                        classifications, reporting and exports, DCP inventory synchronization, employee
+                                        records, PDS generation, and mobile-facing API routes.
+                                    </p>
+                                    <div class="system-list">
+                                        <span><i>01</i> ROX Inventory 2.0</span>
+                                        <span><i>02</i> DepEd DCP</span>
+                                        <span><i>03</i> DepEd HRIS</span>
+                                    </div>
+                                    <ul class="tech-list" aria-label="ROX systems technology stack">
+                                        <li>Laravel 8</li>
+                                        <li>Sximo</li>
+                                        <li>MySQL</li>
+                                        <li>REST APIs</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="windmill-gallery windmill-rox" data-windmill-gallery>
+                                <div class="windmill-stage">
+                                <button class="windmill-slide" type="button" data-viewer data-gallery="rox"
+                                    data-windmill-label="ROX Inventory"
+                                    data-title="ROX Inventory 2.0"
+                                    data-description="Maintained and extended DepEd Region 10 property management across role-scoped inventory, Government Accounting Manual classifications, reporting and exports, and external API support.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/region 10 inventory sample.jpg"
+                                        alt="ROX Inventory 2.0 dashboard" loading="lazy">
+                                </button>
+                                <button class="windmill-slide" type="button" data-viewer data-gallery="rox"
+                                    data-windmill-label="DCP inventory"
+                                    data-title="DepEd DCP"
+                                    data-description="Division Computerization Program asset records integrated with the ROX Inventory API.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/region 10 dcp sample.jpg"
+                                        alt="DepEd DCP inventory interface" loading="lazy">
+                                </button>
+                                <button class="windmill-slide" type="button" data-viewer data-gallery="rox"
+                                    data-windmill-label="DCP records"
+                                    data-title="DepEd DCP — Record Workflow"
+                                    data-description="A privacy-redacted view of synchronized DCP asset management workflows.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/region 10 dcp records redacted.png"
+                                        alt="Privacy-redacted DepEd DCP record workflow" loading="lazy">
+                                </button>
+                                <button class="windmill-slide" type="button" data-viewer data-gallery="rox"
+                                    data-windmill-label="HRIS"
+                                    data-title="DepEd HRIS"
+                                    data-description="Employee records, competency tracking, service records, training, and PDS generation workflows.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/region 10 hris sample.jpg"
+                                        alt="DepEd HRIS dashboard" loading="lazy">
+                                </button>
+                                </div>
+                                <div class="windmill-controls">
+                                    <div class="windmill-readout">
+                                        <span data-windmill-count>01 / 04</span>
+                                        <strong data-windmill-label-output>ROX Inventory</strong>
+                                    </div>
+                                    <div class="windmill-actions">
+                                        <button type="button" data-windmill-prev aria-label="Previous ROX screen">←</button>
+                                        <button type="button" class="windmill-explore" data-gallery-open="rox">Explore all</button>
+                                        <button type="button" data-windmill-next aria-label="Next ROX screen">→</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-showcase" id="klema">
+                        <div class="project-topline">
+                            <span>03 / Cross-platform</span>
+                            <span>Climate-smart agriculture</span>
+                        </div>
+
+                        <div class="windmill-gallery" data-windmill-gallery>
+                            <div class="windmill-stage">
+                        <button class="windmill-slide" type="button" data-viewer data-gallery="klema"
+                            data-windmill-label="Platform overview"
+                            data-title="KLEMA — Climate-Smart Agriculture Monitoring"
+                            data-description="Cross-platform farm mapping, weather monitoring, alerts, and scheduled recommendations for agricultural operations.">
+                            <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/klema cross platform ios, android, linux, windows.png"
+                                alt="KLEMA agriculture monitoring interfaces" loading="lazy">
+                        </button>
+                            <button class="windmill-slide" type="button" data-viewer data-gallery="klema"
+                                data-windmill-label="Satellite map"
+                                data-title="KLEMA — Satellite Monitoring"
+                                data-description="Satellite field view with weather layers and forecast controls for spatial monitoring.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/klema samples/swappy-20260714-160853.png"
+                                    alt="KLEMA satellite field monitoring" loading="lazy">
+                            </button>
+                            <button class="windmill-slide" type="button" data-viewer data-gallery="klema"
+                                data-windmill-label="Field map"
+                                data-title="KLEMA — Field Map"
+                                data-description="Interactive street-map monitoring with field conditions, weather layers, and a forecast timeline.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/klema samples/swappy-20260714-160719.png"
+                                    alt="KLEMA interactive street map" loading="lazy">
+                            </button>
+                            <button class="windmill-slide" type="button" data-viewer data-gallery="klema"
+                                data-windmill-label="Authentication"
+                                data-title="KLEMA — Authentication"
+                                data-description="Secure dark-themed authentication for the climate-smart monitoring workspace.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/klema samples/swappy-20260714-160653.png"
+                                    alt="KLEMA login interface" loading="lazy">
+                            </button>
+                            <button class="windmill-slide" type="button" data-viewer data-gallery="klema"
+                                data-windmill-label="Five-day forecast"
+                                data-title="KLEMA — Five-Day Forecast"
+                                data-description="Field-specific conditions and a five-day weather forecast for operational planning.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/klema samples/swappy-20260714-160735.png"
+                                    alt="KLEMA five-day weather forecast" loading="lazy">
+                            </button>
+                            <button class="windmill-slide" type="button" data-viewer data-gallery="klema"
+                                data-windmill-label="Weather calendar"
+                                data-title="KLEMA — Weather Calendar"
+                                data-description="Monthly weather calendar with daily conditions and activity planning.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/klema samples/swappy-20260714-160758.png"
+                                    alt="KLEMA monthly weather calendar" loading="lazy">
+                            </button>
+                            <button class="windmill-slide" type="button" data-viewer data-gallery="klema"
+                                data-windmill-label="Weather alerts"
+                                data-title="KLEMA — Weather Alerts"
+                                data-description="Weather, maintenance, and harvest notifications organized by active operational risk.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/klema samples/swappy-20260714-160812.png"
+                                    alt="KLEMA weather alerts and notifications" loading="lazy">
+                            </button>
+                            <button class="windmill-slide" type="button" data-viewer data-gallery="klema"
+                                data-windmill-label="Data exports"
+                                data-title="KLEMA — Data Exports"
+                                data-description="Weather and farm-data export controls for reporting and downstream analysis.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/klema samples/swappy-20260714-160823.png"
+                                    alt="KLEMA data export interface" loading="lazy">
+                            </button>
+                            <button class="windmill-slide" type="button" data-viewer data-gallery="klema"
+                                data-windmill-label="Weather analytics"
+                                data-title="KLEMA — Weather Analytics"
+                                data-description="Detailed precipitation, cloud cover, humidity, wind, sunshine-window, and rain-window analysis.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/klema samples/swappy-20260714-161504.png"
+                                    alt="KLEMA detailed weather analytics" loading="lazy">
+                            </button>
+                            </div>
+                            <div class="windmill-controls">
+                                <div class="windmill-readout">
+                                    <span data-windmill-count>01 / 09</span>
+                                    <strong data-windmill-label-output>Platform overview</strong>
+                                </div>
+                                <div class="windmill-actions">
+                                    <button type="button" data-windmill-prev aria-label="Previous KLEMA screen">←</button>
+                                    <button type="button" class="windmill-explore" data-gallery-open="klema">Explore all</button>
+                                    <button type="button" data-windmill-next aria-label="Next KLEMA screen">→</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-story horizontal-story">
+                            <div class="project-title-block">
+                                <p class="project-type">Monitoring and alert platform</p>
+                                <h3>KLEMA</h3>
+                            </div>
+                            <div class="project-copy">
+                                <p class="project-lead">
+                                    Farm boundaries, live weather conditions, and operational alerts brought together
+                                    across mobile and web interfaces.
+                                </p>
+                                <p>
+                                    KLEMA uses Leaflet and GeoJSON for field mapping, a Laravel/PostgreSQL backend for
+                                    farm data, and scheduled commands for irrigation, harvest, and maintenance alert
+                                    scenarios.
+                                </p>
+                                <ul class="tech-list" aria-label="KLEMA technology stack">
+                                    <li>Vue 3</li>
+                                    <li>Capacitor 6</li>
+                                    <li>Laravel 12</li>
+                                    <li>PostgreSQL</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="project-pair">
+                        <article class="project-card" id="lucker">
+                            <div class="project-topline">
+                                <span>04 / Mobile</span>
+                                <span>Flutter</span>
+                            </div>
+                            <div class="mobile-collage five-up" aria-label="Lucker application screenshots">
+                                <button class="collage-phone collage-home" type="button" data-viewer data-gallery="lucker"
+                                    data-title="Lucker — Home Dashboard"
+                                    data-description="The main Lucker dashboard for location-aware booking, locker access, QR scanning, history, promotions, and recent reservations.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/Lucker App.jpg"
+                                        alt="Lucker home dashboard" loading="lazy">
+                                </button>
+                                <button class="collage-phone collage-five-one" type="button" data-viewer data-gallery="lucker"
+                                    data-title="Lucker — Locker Availability"
+                                    data-description="Browse available smart lockers by location and size.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/luckers/clean/available-lockers.png"
+                                        alt="Lucker available lockers screen" loading="lazy">
+                                </button>
+                                <button class="collage-phone collage-five-two" type="button" data-viewer data-gallery="lucker"
+                                    data-title="Lucker — Locker Details"
+                                    data-description="Review locker dimensions, availability, and the selected booking window.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/luckers/clean/locker-a1.png"
+                                        alt="Lucker locker details and booking period" loading="lazy">
+                                </button>
+                                <button class="collage-phone collage-five-three" type="button" data-viewer data-gallery="lucker"
+                                    data-title="Lucker — Booking Duration"
+                                    data-description="Choose a validated booking duration and review its estimated fee.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/luckers/clean/locker-a2-duration.png"
+                                        alt="Lucker booking duration selection" loading="lazy">
+                                </button>
+                                <button class="collage-phone collage-five-four" type="button" data-viewer data-gallery="lucker"
+                                    data-title="Lucker — Date Selection"
+                                    data-description="Select a booking date through the mobile calendar flow.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/luckers/clean/date-picker.png"
+                                        alt="Lucker booking date selection" loading="lazy">
+                                </button>
+                                <button class="collage-phone collage-five-five" type="button" data-viewer data-gallery="lucker"
+                                    data-title="Lucker — Time Selection"
+                                    data-description="Set the booking time through the platform-native time picker.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/luckers/clean/time-picker.png"
+                                        alt="Lucker booking time selection" loading="lazy">
+                                </button>
+                                <button class="visual-action gallery-action" type="button" data-gallery-open="lucker">
+                                    Explore 6 screens <i>↗</i>
+                                </button>
+                            </div>
+                            <div class="project-card-copy">
+                                <p class="project-type">Smart locker reservation</p>
+                                <h3>Lucker</h3>
+                                <p>Discover, reserve, access, and claim lockers with Firebase-backed inventory,
+                                    notifications, QR flows, and validated 3–24 hour booking windows.</p>
+                                <ul class="tech-list">
+                                    <li>Flutter</li>
+                                    <li>Firebase Auth</li>
+                                    <li>Firestore</li>
+                                    <li>QR</li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <article class="project-card" id="agritrade">
+                            <div class="project-topline">
+                                <span>05 / Backend</span>
+                                <span>Marketplace</span>
+                            </div>
+                            <div class="mobile-collage two-up" aria-label="AgriTrade application screenshots">
+                                <button class="collage-phone collage-phone-one" type="button" data-viewer data-gallery="agritrade"
+                                    data-title="AgriTrade — Marketplace"
+                                    data-description="Mobile agricultural product discovery backed by the NestJS marketplace API.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/nestjs backend role for agritrade/608788598_1606171500383390_1665257668833883780_n.png"
+                                        alt="AgriTrade mobile marketplace" loading="lazy">
+                                </button>
+                                <button class="collage-phone collage-phone-three" type="button" data-viewer data-gallery="agritrade"
+                                    data-title="AgriTrade — Mobile Experience"
+                                    data-description="Additional mobile experience supported by the NestJS and PostgreSQL backend.">
+                                    <img src="assets/images/drive-download-20260708T113421Z-3-001/nestjs backend role for agritrade/598771315_1762392367721159_4816385654598259056_n.jpg"
+                                        alt="AgriTrade mobile experience" loading="lazy">
+                                </button>
+                                <button class="visual-action gallery-action" type="button" data-gallery-open="agritrade">
+                                    Explore 2 screens <i>↗</i>
+                                </button>
+                            </div>
+                            <div class="project-card-copy">
+                                <p class="project-type">Role-based marketplace API</p>
+                                <h3>AgriTrade</h3>
+                                <p>NestJS backend APIs for farmers, consumers, and administrators with JWT
+                                    authentication, RBAC guards, carts, orders, payouts, and promo-code flows.</p>
+                                <ul class="tech-list">
+                                    <li>NestJS 11</li>
+                                    <li>PostgreSQL</li>
+                                    <li>JWT / RBAC</li>
+                                    <li>Expo</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="project-archive">
+                    <div class="archive-heading">
+                        <p class="section-kicker"><span>+</span> System archive</p>
+                        <p>More builds across web, mobile, and desktop—with the interfaces to prove them.</p>
+                    </div>
+
+                    <div class="archive-media-grid">
+                        <article class="archive-media-card archive-media-wide">
+                            <div class="archive-fade-gallery" data-fade-gallery data-fade-delay="5000">
+                                <div class="archive-fade-stage">
+                                    <button class="archive-fade-slide" type="button" data-viewer data-gallery="konek"
+                                        data-fade-label="Landing page" data-title="KONEK — CMU Talent Network"
+                                        data-description="The public landing experience introducing work opportunities within the CMU community.">
+                                        <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/konek.png"
+                                            alt="KONEK CMU talent network landing page" loading="lazy">
+                                    </button>
+                                    <button class="archive-fade-slide" type="button" data-viewer data-gallery="konek"
+                                        data-fade-label="Student dashboard" data-title="KONEK — Student Dashboard"
+                                        data-description="A unified student workspace for monitoring posted jobs, applications, saved opportunities, and review activity.">
+                                        <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/konek samples/swappy-20260714-165519.png"
+                                            alt="KONEK student dashboard" loading="lazy">
+                                    </button>
+                                    <button class="archive-fade-slide" type="button" data-viewer data-gallery="konek"
+                                        data-fade-label="Opportunity board" data-title="KONEK — Opportunity Board"
+                                        data-description="Searchable student work listings with category, work-type, experience, and sorting filters.">
+                                        <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/konek samples/swappy-20260714-165457.png"
+                                            alt="KONEK student opportunity board" loading="lazy">
+                                    </button>
+                                    <button class="archive-fade-slide" type="button" data-viewer data-gallery="konek"
+                                        data-fade-label="Admin dashboard" data-title="KONEK — Admin Dashboard"
+                                        data-description="Administrative monitoring for users, published jobs, application reviews, and approaching deadlines.">
+                                        <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/konek samples/swappy-20260714-165626.png"
+                                            alt="KONEK administrative dashboard" loading="lazy">
+                                    </button>
+                                    <button class="archive-fade-slide" type="button" data-viewer data-gallery="konek"
+                                        data-fade-label="Platform reports" data-title="KONEK — Platform Reports"
+                                        data-description="Administrative reporting across users, jobs, acceptance rates, and application outcomes.">
+                                        <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/konek samples/swappy-20260714-165652.png"
+                                            alt="KONEK platform reports" loading="lazy">
+                                    </button>
+                                </div>
+                                <div class="archive-fade-toolbar">
+                                    <div class="archive-fade-readout">
+                                        <span data-fade-count>01 / 05</span>
+                                        <strong data-fade-label-output>Landing page</strong>
+                                    </div>
+                                    <div class="archive-fade-actions">
+                                        <button type="button" data-fade-prev aria-label="Previous KONEK screen">←</button>
+                                        <button type="button" data-fade-toggle aria-label="Pause KONEK slideshow">Ⅱ</button>
+                                        <button type="button" data-fade-next aria-label="Next KONEK screen">→</button>
+                                        <button type="button" class="archive-fade-explore" data-gallery-open="konek">Explore all</button>
+                                    </div>
+                                    <span class="archive-fade-progress" aria-hidden="true"><i data-fade-progress></i></span>
+                                </div>
+                            </div>
+                            <div>
+                                <span>Laravel 12 / MySQL / Blade</span>
+                                <h3>KONEK</h3>
+                                <p>CMU talent network and freelance marketplace.</p>
+                            </div>
+                        </article>
+
+                        <article class="archive-media-card archive-media-wide">
+                            <button type="button" data-viewer data-title="EC Mabao HR & Payroll"
+                                data-description="HR, employee, and supervisor workflows covering attendance, leave, payroll, statutory deductions, and PDF reports.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/ec mabao hr and payroll.png"
+                                    alt="EC Mabao HR and Payroll dashboard" loading="lazy">
+                            </button>
+                            <div>
+                                <span>Flutter / SQLite / PDF</span>
+                                <h3>EC Mabao HR & Payroll</h3>
+                                <p>Attendance, leave, payroll, deductions, and reporting.</p>
+                            </div>
+                        </article>
+
+                        <article class="archive-media-card archive-media-phone">
+                            <button type="button" data-viewer data-title="BusTrak"
+                                data-description="A Flutter transportation application exploring commuter authentication and bus-focused mobile workflows.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/Bustrak.jpg"
+                                    alt="BusTrak mobile application" loading="lazy">
+                            </button>
+                            <div>
+                                <span>Flutter / Mobile</span>
+                                <h3>BusTrak</h3>
+                                <p>Mobile transportation and commuter workflows.</p>
+                            </div>
+                        </article>
+
+                        <article class="archive-media-card archive-media-phone">
+                            <button type="button" data-viewer data-title="Anime App"
+                                data-description="A dark mobile interface for anime search, top titles, seasonal discovery, ratings, and poster grids.">
+                                <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/project for personal use.jpg"
+                                    alt="Anime discovery mobile app" loading="lazy">
+                            </button>
+                            <div>
+                                <span>Flutter / Personal project</span>
+                                <h3>Anime App</h3>
+                                <p>Search, rankings, seasonal discovery, and media browsing.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="archive-list text-only-archive">
+                        <article>
+                            <span>VB.NET / MySQL</span>
+                            <h3>Iron Lifters</h3>
+                            <p>Gym membership, QR attendance, payments, and audit records.</p>
+                        </article>
+                        <article>
+                            <span>Flutter / MySQL</span>
+                            <h3>GFast Kiosk</h3>
+                            <p>Product scanning, cart building, and kiosk order flows.</p>
+                        </article>
+                        <article>
+                            <span>VB.NET / MySQL</span>
+                            <h3>Library System</h3>
+                            <p>Authors, books, borrowers, loans, and return tracking.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="experience-section">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker"><span>02</span> Experience</p>
+                        <h2>Built inside<br><em>real constraints.</em></h2>
+                    </div>
+                    <p class="section-intro">
+                        Working across new builds and legacy systems taught me to understand the workflow first,
+                        respect existing data, and improve software without losing the people who depend on it.
+                    </p>
+                </div>
+
+                <div class="experience-list">
+                    <article class="experience-item">
+                        <div class="experience-marker"><span>01</span></div>
+                        <div class="experience-meta">
+                            <p>Department of Education</p>
+                            <span>Regional Office 10 · Internship</span>
+                            <span>Cagayan de Oro, Philippines</span>
+                        </div>
+                        <div class="experience-body">
+                            <p class="project-type">Full-Stack Developer & ServiceDesk Engineer</p>
+                            <h3>Government systems and user support</h3>
+                            <p>Maintained and extended inventory, DCP, and HRIS platforms while supporting users and
+                                working through legacy schemas, deployment constraints, reporting requirements, and
+                                API integrations.</p>
+                            <ul>
+                                <li>Laravel and Sximo feature maintenance</li>
+                                <li>Inventory and HR reporting workflows</li>
+                                <li>Mobile and external API routes</li>
+                                <li>Technical support for government users</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="experience-item">
+                        <div class="experience-marker"><span>02</span></div>
+                        <div class="experience-meta">
+                            <p>CMU Quality Assurance Office</p>
+                            <span>Creative and documentation support</span>
+                            <span>Musuan, Bukidnon</span>
+                        </div>
+                        <div class="experience-body">
+                            <p class="project-type">Multimedia Contributor</p>
+                            <h3>Accreditation communication</h3>
+                            <p>Produced video and presentation materials for ISO accreditation, translating formal
+                                documentation into clear visual communication for review and presentation.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="capabilities-section">
+            <div class="container">
+                <div class="section-heading compact-heading">
+                    <div>
+                        <p class="section-kicker"><span>03</span> Capabilities</p>
+                        <h2>Across the<br><em>whole system.</em></h2>
+                    </div>
+                    <p class="section-intro">A practical stack shaped by shipping complete workflows—not collecting
+                        technology logos.</p>
+                </div>
+
+                <div class="capability-grid">
+                    <article>
+                        <span class="capability-number">01</span>
+                        <h3>Backend systems</h3>
+                        <p>Role-based applications, domain workflows, scheduled automation, reports, and APIs.</p>
+                        <ul>
+                            <li>PHP / Laravel 8 & 12</li>
+                            <li>Node.js / NestJS 11</li>
+                            <li>REST APIs / JWT / RBAC</li>
+                            <li>PDF and report generation</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <span class="capability-number">02</span>
+                        <h3>Web interfaces</h3>
+                        <p>Operational dashboards and responsive interfaces built around dense, real-world data.</p>
+                        <ul>
+                            <li>Vue 3 / JavaScript</li>
+                            <li>Blade / Tailwind CSS</li>
+                            <li>Charts and analytics</li>
+                            <li>Leaflet / GeoJSON</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <span class="capability-number">03</span>
+                        <h3>Mobile & desktop</h3>
+                        <p>Cross-platform applications for field work, reservations, HR, scanning, and administration.</p>
+                        <ul>
+                            <li>Flutter / Dart</li>
+                            <li>React Native / Expo</li>
+                            <li>Capacitor</li>
+                            <li>.NET / WinForms</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <span class="capability-number">04</span>
+                        <h3>Data & delivery</h3>
+                        <p>Relational and cloud data stores with deployment tooling for maintainable delivery.</p>
+                        <ul>
+                            <li>PostgreSQL / MySQL / SQLite</li>
+                            <li>Firebase / Firestore</li>
+                            <li>Docker / Railway / Nginx</li>
+                            <li>Linux / Git / GitHub</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container about-layout">
+                <div class="about-label">
+                    <p class="section-kicker"><span>04</span> About</p>
+                    <span class="availability"><i></i> Based in Bukidnon, Philippines</span>
+                </div>
+                <div class="about-copy">
+                    <h2>I build software for the parts of work that are usually <em>messy.</em></h2>
+                    <div class="about-columns">
+                        <p>
+                            I’m a BS Information Technology graduate specializing in Software Development. My work
+                            tends to sit where software meets a complicated real process: crop stages, property
+                            classifications, employee records, payroll rules, inventory movement, or multi-role
+                            marketplaces.
                         </p>
-                        <div class="project-tags">
-                            <span>Flutter</span>
-                            <span>Firebase</span>
-                            <span>QR</span>
+                        <p>
+                            I enjoy understanding those rules, shaping reliable data around them, and building an
+                            interface that people can actually use. I’m comfortable moving across backend, web, mobile,
+                            database, and deployment work when the system needs it.
+                        </p>
+                    </div>
+                    <div class="education-block">
+                        <span>Education</span>
+                        <div>
+                            <h3>Central Mindanao University</h3>
+                            <p>Bachelor of Science in Information Technology</p>
+                            <small>Software Development Track · Bukidnon, Philippines</small>
                         </div>
-                    </div>
-                </article>
-
-                <article class="card glass project-card">
-                    <img src="assets/images/drive-download-20260708T113421Z-3-001/nestjs backend role for agritrade/608788598_1606171500383390_1665257668833883780_n.png"
-                        alt="AgriTrade mobile marketplace screenshot">
-                    <div class="project-content">
-                        <div class="project-meta">React Native / NestJS / PostgreSQL</div>
-                        <h3>AgriTrade</h3>
-                        <p>Role-based rice marketplace connecting farmers, consumers, and administrators with JWT
-                            authentication, RBAC, product listings, carts, orders, payouts, notifications, and admin
-                            workflows.</p>
-                        <div class="project-tags">
-                            <span>Marketplace</span>
-                            <span>NestJS</span>
-                            <span>Mobile</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card glass project-card">
-                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/konek.png"
-                        alt="KONEK CMU talent network landing page screenshot">
-                    <div class="project-content">
-                        <div class="project-meta">Laravel 12 / MySQL / Blade</div>
-                        <h3>KONEK</h3>
-                        <p>CMU talent network and freelance marketplace for students, clients, and administrators with
-                            profiles, skills, job posts, applications, dashboards, notifications, and marketplace
-                            workflows.</p>
-                        <div class="project-tags">
-                            <span>Freelance</span>
-                            <span>Laravel</span>
-                            <span>CMU</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card glass project-card">
-                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/region 10 inventory sample.jpg"
-                        alt="ROX Inventory dashboard screenshot">
-                    <div class="project-content">
-                        <div class="project-meta">Laravel 8 / Sximo / MySQL</div>
-                        <h3>ROX Inventory 2.0</h3>
-                        <p>DepEd Region 10 property and asset management system with GAM classifications, role-scoped
-                            inventory, QR property numbers, reports, imports, exports, and mobile API support.</p>
-                        <div class="project-tags">
-                            <span>Government</span>
-                            <span>Inventory</span>
-                            <span>Reports</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card glass project-card">
-                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/region 10 dcp sample.jpg"
-                        alt="DepEd DCP inventory screenshot">
-                    <div class="project-content">
-                        <div class="project-meta">Laravel / Sximo / REST API</div>
-                        <h3>DepEd DCP</h3>
-                        <p>DCP inventory module integrated with the ROX Inventory API, synchronizing Division
-                            Computerization Program assets between two Laravel/Sximo applications.</p>
-                        <div class="project-tags">
-                            <span>API Integration</span>
-                            <span>DCP Assets</span>
-                            <span>Laravel</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card glass project-card">
-                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Laravel Projects/region 10 hris sample.jpg"
-                        alt="DepEd HRIS dashboard screenshot">
-                    <div class="project-content">
-                        <div class="project-meta">Laravel 8 / Sximo / MySQL</div>
-                        <h3>DepEd HRIS</h3>
-                        <p>Human Resource Information System with employee profiles, training records, competency
-                            tracking, rewards, service records, PDS generation, and mobile/API endpoints.</p>
-                        <div class="project-tags">
-                            <span>HRIS</span>
-                            <span>PDS</span>
-                            <span>Admin</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card glass project-card">
-                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/ec mabao hr and payroll.png"
-                        alt="EC Mabao HR and Payroll dashboard screenshot">
-                    <div class="project-content">
-                        <div class="project-meta">Flutter / SQLite / PDF Reports</div>
-                        <h3>EC Mabao HR & Payroll</h3>
-                        <p>HR and payroll management system with employee records, DTR views, leave reviews, travel and
-                            overtime requests, monthly payroll processing, statutory deductions, and generated payroll
-                            reports.</p>
-                        <div class="project-tags">
-                            <span>HR Portal</span>
-                            <span>Payroll</span>
-                            <span>DTR</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card glass project-card">
-                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/Bustrak.jpg"
-                        alt="BusTrak sign in screen screenshot">
-                    <div class="project-content">
-                        <div class="project-meta">Flutter mobile app</div>
-                        <h3>BusTrak</h3>
-                        <p>Mobile transportation app with authentication screens and a bus-focused workflow for
-                            commuter access, account creation, and transit-related user actions.</p>
-                        <div class="project-tags">
-                            <span>Flutter</span>
-                            <span>Mobile UI</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card glass project-card">
-                    <img src="assets/images/drive-download-20260708T113421Z-3-001/Flutter projects/project for personal use.jpg"
-                        alt="Anime App top anime mobile screen screenshot">
-                    <div class="project-content">
-                        <div class="project-meta">Flutter personal project</div>
-                        <h3>Anime App</h3>
-                        <p>Personal mobile app for browsing anime titles with search, top anime, seasonal views, poster
-                            grids, ratings, and a dark themed interface.</p>
-                        <div class="project-tags">
-                            <span>Personal</span>
-                            <span>Mobile UI</span>
-                            <span>Flutter</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <div class="project-notes glass">
-                <h3>Additional Projects Without Screenshots</h3>
-                <div class="project-note-grid">
-                    <div>
-                        <strong>GFast Kiosk Scanner</strong>
-                        <span>Flutter kiosk prototype for product scanning, cart building, MySQL order writes, and
-                            placeholder payment flow.</span>
-                    </div>
-                    <div>
-                        <strong>Iron Lifters</strong>
-                        <span>VB.NET WinForms gym management system with QR attendance, membership renewals, payments,
-                            faculty accounts, and emails.</span>
-                    </div>
-                    <div>
-                        <strong>Library Management System</strong>
-                        <span>VB.NET WinForms library administration app for authors, books, borrowers, loans, and
-                            return tracking.</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="certificates">
-        <div class="container">
-            <h2 class="section-title">Certificates</h2>
-            <div class="grid">
-                <div class="card glass certificate-card">
-                    <img src="assets/images/certificate-capstone-presentation.jpg"
-                        alt="Capstone Presentation Certificate">
-                    <h3>Capstone Presentation</h3>
-                    <p>Presented the Farm Operations Management System at the CISC Colloquium A.Y. 2025-2026.</p>
-                </div>
-                <div class="card glass certificate-card">
-                    <img src="assets/images/certificate-sonder-participation.jpg"
-                        alt="Sonder Participation Certificate">
-                    <h3>Sonder Participation</h3>
-                    <p>Certificate of Participation in SONDER 2025: Google Dev World Tour in Indonesia.</p>
-                </div>
-                <div class="card glass certificate-card">
-                    <img src="assets/images/certificate-avalanche-completion.jpg"
-                        alt="Avalanche Completion Certificate">
-                    <h3>Avalanche Completion</h3>
-                    <p>Completion of Blockchain and Web3 Info Session powered by Avalanche University Connect Program.
-                    </p>
+        <section id="certificates" class="credentials-section">
+            <div class="container">
+                <div class="section-heading credentials-heading">
+                    <div>
+                        <p class="section-kicker"><span>05</span> Credentials</p>
+                        <h2>Recognition &<br><em>continued learning.</em></h2>
+                    </div>
                 </div>
 
-                <div class="card glass certificate-card">
-                    <img src="assets/images/certificate-avalanche-participation.jpg"
-                        alt="Avalanche Participation Certificate">
-                    <h3>Avalanche Participation</h3>
-                    <p>Participation in Avalanche Team1 University Connect held at Central Mindanao University.</p>
-                </div>
-                <div class="card glass certificate-card">
-                    <img src="assets/images/certificate-typing-speed.jpg" alt="Typing Speed Certificate">
-                    <h3>Typing Speed Certification</h3>
-                    <p>Achieved 1st Runner Up in the 2025 CMU-CISC Typing Speed Championship.</p>
-                </div>
-                <div class="card glass certificate-card">
-                    <img src="assets/images/certificate-openai-vibe-recognition.jpg"
-                        alt="OpenAI Vibe Recognition Certificate">
-                    <h3>OpenAI Vibe Recognition</h3>
-                    <p>Recognition for participation in OpenAI Vibe Coding Session and exploring No-Code development.
-                    </p>
-                </div>
-                <div class="card glass certificate-card">
-                    <img src="assets/images/certificate-research-summit-2022.jpg" alt="Best Research Paper Certificate">
-                    <h3>Best Research Paper</h3>
-                    <p>Awarded Best Research Paper during the Senior High School Research Summit 2022 at Bukidnon
-                        National High School.</p>
-                </div>
-                <div class="card glass certificate-card">
-                    <img src="assets/images/certificate-riptide.jpg" alt="Riptide Participation Certificate">
-                    <h3>Science Month Participation</h3>
-                    <p>Participation in the 2021 Science Month Virtual Culminating Activity with the theme RIPTIDE.</p>
+                <div class="credential-grid">
+                    <button class="credential-card" type="button" data-viewer
+                        data-title="Capstone Presentation"
+                        data-description="Presented the Farm Operations Management System at the CISC Colloquium A.Y. 2025–2026.">
+                        <img src="assets/images/certificate-capstone-presentation.jpg"
+                            alt="Capstone Presentation certificate" loading="lazy">
+                        <span><b>2026</b> Capstone Presentation</span>
+                    </button>
+                    <button class="credential-card" type="button" data-viewer
+                        data-title="Best Research Paper"
+                        data-description="Awarded Best Research Paper during the Senior High School Research Summit 2022.">
+                        <img src="assets/images/certificate-research-summit-2022.jpg"
+                            alt="Best Research Paper certificate" loading="lazy">
+                        <span><b>2022</b> Best Research Paper</span>
+                    </button>
+                    <button class="credential-card" type="button" data-viewer
+                        data-title="OpenAI Vibe Recognition"
+                        data-description="Recognition for participation in an OpenAI Vibe Coding session and exploration of no-code development.">
+                        <img src="assets/images/certificate-openai-vibe-recognition.jpg"
+                            alt="OpenAI Vibe Recognition certificate" loading="lazy">
+                        <span><b>2025</b> OpenAI Vibe Recognition</span>
+                    </button>
+                    <button class="credential-card" type="button" data-viewer
+                        data-title="Typing Speed Championship"
+                        data-description="First runner-up in the 2025 CMU-CISC Typing Speed Championship.">
+                        <img src="assets/images/certificate-typing-speed.jpg"
+                            alt="Typing Speed Championship certificate" loading="lazy">
+                        <span><b>2025</b> Typing Speed · 1st Runner-up</span>
+                    </button>
+                    <button class="credential-card" type="button" data-viewer
+                        data-title="Sonder 2025 — Google Dev World Tour"
+                        data-description="Certificate of participation in SONDER 2025: Google Dev World Tour in Indonesia.">
+                        <img src="assets/images/certificate-sonder-participation.jpg"
+                            alt="Sonder 2025 participation certificate" loading="lazy">
+                        <span><b>2025</b> Sonder Participation</span>
+                    </button>
+                    <button class="credential-card" type="button" data-viewer
+                        data-title="Avalanche University Connect — Completion"
+                        data-description="Completed the Blockchain and Web3 information session powered by the Avalanche University Connect Program.">
+                        <img src="assets/images/certificate-avalanche-completion.jpg"
+                            alt="Avalanche University Connect completion certificate" loading="lazy">
+                        <span><b>2025</b> Avalanche Completion</span>
+                    </button>
+                    <button class="credential-card" type="button" data-viewer
+                        data-title="Avalanche Team1 University Connect"
+                        data-description="Participated in Avalanche Team1 University Connect at Central Mindanao University.">
+                        <img src="assets/images/certificate-avalanche-participation.jpg"
+                            alt="Avalanche Team1 participation certificate" loading="lazy">
+                        <span><b>2025</b> Avalanche Participation</span>
+                    </button>
+                    <button class="credential-card" type="button" data-viewer
+                        data-title="Science Month 2021 — RIPTIDE"
+                        data-description="Participated in the 2021 Science Month Virtual Culminating Activity themed RIPTIDE.">
+                        <img src="assets/images/certificate-riptide.jpg"
+                            alt="Science Month RIPTIDE participation certificate" loading="lazy">
+                        <span><b>2021</b> Science Month Participation</span>
+                    </button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact">
-        <div class="container glass card" style="text-align: center; max-width: 600px;">
-            <h2 class="section-title">Contact</h2>
-            <p style="margin-bottom: 20px;">Let's connect and explore the endless possibilities of the web together.</p>
-            <a href="mailto:hanyunikul@gmail.com" class="cta-btn">hanyunikul@gmail.com</a>
-        </div>
-    </section>
+        <section id="contact" class="contact-section">
+            <div class="container contact-shell">
+                <div class="contact-signal" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                    <i></i>
+                </div>
+                <p class="section-kicker"><span>06</span> Open channel</p>
+                <h2>Have a complicated workflow?<br><em>Let’s make it usable.</em></h2>
+                <p class="contact-copy">I’m open to software engineering opportunities and collaborations involving
+                    full-stack, backend, mobile, or operational systems.</p>
+                <div class="contact-actions">
+                    <a href="mailto:hanyunikul@gmail.com" class="cta-btn">Send an email</a>
+                    <a href="https://github.com/NuxPower" class="text-link" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+                </div>
+                <a class="contact-email" href="mailto:hanyunikul@gmail.com">hanyunikul@gmail.com</a>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Yohan Lukin Callanta. All Rights Reserved.</p>
+        <div class="container footer-content">
+            <p>© 2026 Yohan Lukin Callanta</p>
+            <p>Designed and built in Bukidnon</p>
+            <a href="#top">Back to top ↑</a>
         </div>
     </footer>
 
-    <!-- Image Viewer Modal -->
-    <div id="image-viewer" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="full-image">
+    <div id="image-viewer" class="modal" role="dialog" aria-modal="true" aria-label="Image preview">
+        <button class="close" type="button" aria-label="Close image preview">×</button>
+        <button class="modal-nav modal-prev" type="button" aria-label="Previous image">←</button>
+        <button class="modal-nav modal-next" type="button" aria-label="Next image">→</button>
+        <div class="modal-stage">
+            <img class="modal-content" id="full-image" alt="">
+        </div>
         <div id="caption"></div>
     </div>
 
-    <!-- Scripts -->
+    <button id="scroll-to-top" type="button" aria-label="Scroll to top">↑</button>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <button id="scroll-to-top" aria-label="Scroll to top">&#8679;</button>
     <script src="assets/js/main.js"></script>
     <script src="assets/loading.js"></script>
 </body>
