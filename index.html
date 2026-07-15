@@ -103,10 +103,10 @@
                     </p>
                 </div>
 
-                <div class="system-map" aria-label="Interactive project map">
+                <div class="system-map" aria-label="Interactive 3D project solar system">
                     <div class="map-toolbar">
-                        <span>portfolio.sys / project network</span>
-                        <span class="network-status"><i></i> 05 systems online</span>
+                        <span>portfolio.sys / ylc orbital system</span>
+                        <span class="network-status"><i></i> 05 projects in orbit</span>
                     </div>
                     <div class="map-field" data-depth-scene>
                         <div class="map-scene">
@@ -115,56 +115,73 @@
                             <div class="map-atmosphere atmosphere-front" data-depth="1.15" data-z="95"
                                 aria-hidden="true"></div>
 
-                            <svg class="map-links" data-depth="0.12" data-z="-18" viewBox="0 0 1000 570"
-                                preserveAspectRatio="none" aria-hidden="true">
-                                <path data-link="anibukid" d="M500 285 C395 230 285 160 165 102"></path>
-                                <path data-link="rox" d="M500 285 C610 220 720 155 835 105"></path>
-                                <path data-link="klema" d="M500 285 C610 340 700 425 790 478"></path>
-                                <path data-link="lucker" d="M500 285 C405 350 315 430 205 485"></path>
-                                <path data-link="agritrade" d="M500 285 C635 280 760 285 905 292"></path>
-                            </svg>
-
-                            <div class="map-orbit orbit-one" data-depth="0.08" data-z="-28"></div>
-                            <div class="map-orbit orbit-two" data-depth="-0.12" data-z="-52"></div>
-                            <div class="map-core" data-depth="0.3" data-z="34" aria-hidden="true">
-                                <span>YLC</span>
-                                <small>system core</small>
+                            <div class="map-orbits" data-depth="0.08" data-z="-18" aria-hidden="true">
+                                <i class="map-orbit orbit-one"></i>
+                                <i class="map-orbit orbit-two"></i>
+                                <i class="map-orbit orbit-three"></i>
+                                <i class="map-orbit orbit-four"></i>
+                                <i class="map-orbit orbit-five"></i>
+                            </div>
+                            <div class="map-core" data-depth="0.3" data-z="42" aria-hidden="true">
+                                <div class="core-sphere">
+                                    <span>YLC</span>
+                                    <small>system core</small>
+                                </div>
+                                <i class="core-halo halo-one"></i>
+                                <i class="core-halo halo-two"></i>
                             </div>
 
                             <a class="map-node node-anibukid" href="#anibukid" data-node="anibukid"
-                                data-depth="0.82" data-z="72">
-                                <span class="node-index">01</span>
-                                <strong>ANIBUKID</strong>
-                                <small>Farm operations</small>
-                                <span class="node-meta">Laravel · Vue · PostgreSQL</span>
+                                data-depth="0.82" data-z="0" data-orbit="142" data-phase="212" data-speed="24">
+                                <span class="map-planet planet-anibukid" aria-hidden="true"><i></i></span>
+                                <span class="node-info">
+                                    <span class="node-index">01</span>
+                                    <strong>ANIBUKID</strong>
+                                    <small>Farm operations</small>
+                                    <span class="node-meta">Laravel · Vue · PostgreSQL</span>
+                                </span>
                             </a>
                             <a class="map-node node-rox" href="#rox" data-node="rox" data-depth="0.58" data-z="46">
-                                <span class="node-index">02</span>
-                                <strong>ROX SYSTEMS</strong>
-                                <small>Government ops</small>
-                                <span class="node-meta">Laravel · Sximo · MySQL</span>
+                                <span class="map-planet planet-rox" aria-hidden="true"><i></i></span>
+                                <span class="node-info">
+                                    <span class="node-index">02</span>
+                                    <strong>ROX SYSTEMS</strong>
+                                    <small>Government ops</small>
+                                    <span class="node-meta">Laravel · Sximo · MySQL</span>
+                                </span>
                             </a>
-                            <a class="map-node node-klema" href="#klema" data-node="klema" data-depth="0.72" data-z="62">
-                                <span class="node-index">03</span>
-                                <strong>KLEMA</strong>
-                                <small>Climate monitoring</small>
-                                <span class="node-meta">Vue · Capacitor · Laravel</span>
+                            <a class="map-node node-klema" href="#klema" data-node="klema" data-depth="0.72" data-z="0"
+                                data-orbit="270" data-phase="312" data-speed="36">
+                                <span class="map-planet planet-klema" aria-hidden="true"><i></i></span>
+                                <span class="node-info">
+                                    <span class="node-index">03</span>
+                                    <strong>KLEMA</strong>
+                                    <small>Climate monitoring</small>
+                                    <span class="node-meta">Vue · Capacitor · Laravel</span>
+                                </span>
                             </a>
-                            <a class="map-node node-lucker" href="#lucker" data-node="lucker" data-depth="0.48" data-z="38">
-                                <span class="node-index">04</span>
-                                <strong>LUCKER</strong>
-                                <small>Smart lockers</small>
-                                <span class="node-meta">Flutter · Firebase · QR</span>
+                            <a class="map-node node-lucker" href="#lucker" data-node="lucker" data-depth="0.48" data-z="0"
+                                data-orbit="334" data-phase="142" data-speed="42">
+                                <span class="map-planet planet-lucker" aria-hidden="true"><i></i></span>
+                                <span class="node-info">
+                                    <span class="node-index">04</span>
+                                    <strong>LUCKER</strong>
+                                    <small>Smart lockers</small>
+                                    <span class="node-meta">Flutter · Firebase · QR</span>
+                                </span>
                             </a>
                             <a class="map-node node-agritrade" href="#agritrade" data-node="agritrade"
-                                data-depth="0.94" data-z="84">
-                                <span class="node-index">05</span>
-                                <strong>AGRITRADE</strong>
-                                <small>Marketplace API</small>
-                                <span class="node-meta">NestJS · PostgreSQL · RBAC</span>
+                                data-depth="0.94" data-z="0" data-orbit="398" data-phase="28" data-speed="48">
+                                <span class="map-planet planet-agritrade" aria-hidden="true"><i></i></span>
+                                <span class="node-info">
+                                    <span class="node-index">05</span>
+                                    <strong>AGRITRADE</strong>
+                                    <small>Marketplace API</small>
+                                    <span class="node-meta">NestJS · PostgreSQL · RBAC</span>
+                                </span>
                             </a>
                         </div>
-                        <p class="map-instruction" aria-hidden="true">Move to shift camera <i></i> Select a node to focus</p>
+                        <p class="map-instruction" aria-hidden="true">Move to shift perspective <i></i> Hover to pause orbit</p>
                     </div>
                 </div>
 
