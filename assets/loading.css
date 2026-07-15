@@ -159,6 +159,14 @@
     letter-spacing: 5px;
 }
 
+.name-glass {
+    fill: url(#name-glass-gradient);
+    stroke: rgba(255, 255, 255, 0.08);
+    stroke-width: 0.45;
+    paint-order: stroke fill;
+    filter: drop-shadow(0 0 7px rgba(108, 92, 231, 0.12));
+}
+
 .name-trail,
 .name-trace {
     fill: none;
@@ -191,6 +199,10 @@
 
 .name-reveal.visible .name-trace .name-char {
     animation: nameLightStreak 1.8s linear calc(0.12s + var(--light-delay, 0s)) forwards;
+}
+
+.name-reveal.visible .name-glass .name-char {
+    animation: nameGlassShine 3.8s ease calc(1.5s + var(--light-delay, 0s)) forwards;
 }
 
 @keyframes nameShadowOpen {
@@ -274,6 +286,20 @@
     }
 }
 
+@keyframes nameGlassShine {
+    0% {
+        opacity: 0;
+    }
+
+    12%, 76% {
+        opacity: 0.58;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 @media (max-width: 520px) {
     .name-reveal {
         width: 98vw;
@@ -297,6 +323,7 @@
     }
 
     .name-reveal.visible .name-aperture,
+    .name-reveal.visible .name-glass .name-char,
     .name-reveal.visible .name-trail .name-char,
     .name-reveal.visible .name-trace .name-char {
         animation-duration: 0.01ms;

@@ -2,7 +2,7 @@
     const loadingScreen = document.querySelector('.loading-screen');
     const loadingWrapper = document.querySelector('.loading-wrapper');
     const nameReveal = document.querySelector('.name-reveal');
-    const nameLayers = document.querySelectorAll('.name-trail, .name-trace');
+    const nameLayers = document.querySelectorAll('.name-glass, .name-trail, .name-trace');
 
     if (!loadingScreen || !loadingWrapper || !nameReveal) return;
 
