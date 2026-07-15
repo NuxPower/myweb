@@ -426,11 +426,7 @@ section {
     position: relative;
     overflow: hidden;
     margin-bottom: clamp(110px, 14vw, 190px);
-    border: 1px solid var(--line);
-    border-radius: 22px;
-    background: rgba(7, 7, 12, 0.72);
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.32);
-    backdrop-filter: blur(10px);
+    background: transparent;
 }
 
 .system-map::before {
@@ -441,6 +437,7 @@ section {
         linear-gradient(rgba(139, 92, 246, 0.045) 1px, transparent 1px),
         linear-gradient(90deg, rgba(139, 92, 246, 0.045) 1px, transparent 1px);
     background-size: 38px 38px;
+    mask-image: radial-gradient(ellipse at center, black 38%, transparent 82%);
     pointer-events: none;
 }
 
@@ -451,9 +448,7 @@ section {
     min-height: 44px;
     align-items: center;
     justify-content: space-between;
-    padding: 0 18px;
-    border-bottom: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.025);
+    padding: 0 4px;
     color: var(--quiet);
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 0.67rem;
@@ -482,6 +477,9 @@ section {
     position: relative;
     min-height: 620px;
     overflow: hidden;
+    background:
+        radial-gradient(circle at 34% 38%, rgba(139, 92, 246, 0.11), transparent 29%),
+        radial-gradient(circle at 72% 58%, rgba(56, 217, 213, 0.065), transparent 28%);
     perspective: 1100px;
     perspective-origin: 50% 46%;
     transform-style: preserve-3d;
@@ -508,8 +506,7 @@ section {
     will-change: transform;
 }
 
-.map-field::before,
-.map-field::after {
+.map-field::before {
     content: '';
     position: absolute;
     pointer-events: none;
@@ -526,34 +523,11 @@ section {
     opacity: 0.34;
 }
 
-.map-field::after {
-    top: 50%;
-    left: 50%;
-    width: 700px;
-    height: 420px;
-    border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(139, 92, 246, 0.12), rgba(56, 217, 213, 0.025) 38%, transparent 70%);
-    filter: blur(15px);
-    transform: translate(-50%, -50%);
-}
-
 .map-atmosphere {
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
     transform: translate3d(var(--layer-x), var(--layer-y), var(--layer-z));
-}
-
-.atmosphere-back {
-    top: 10%;
-    left: 11%;
-    width: 78%;
-    height: 80%;
-    background:
-        radial-gradient(circle at 31% 34%, rgba(139, 92, 246, 0.18), transparent 28%),
-        radial-gradient(circle at 73% 61%, rgba(56, 217, 213, 0.11), transparent 27%);
-    filter: blur(28px);
-    opacity: 0.72;
 }
 
 .atmosphere-front {
@@ -1208,10 +1182,6 @@ section {
     text-transform: uppercase;
 }
 
-.windmill-rox .windmill-stage {
-    aspect-ratio: 16 / 10.5;
-}
-
 .windmill-mobile .windmill-stage {
     height: 444px;
     aspect-ratio: auto;
@@ -1355,6 +1325,15 @@ section {
     letter-spacing: -0.075em;
 }
 
+.project-title-block .rox-title {
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    line-height: 0.88;
+}
+
+.rox-title span {
+    display: block;
+}
+
 .project-copy {
     color: var(--muted);
 }
@@ -1420,115 +1399,6 @@ section {
     background: rgba(255, 255, 255, 0.025);
     color: var(--muted);
     font-size: 0.68rem;
-}
-
-.project-split {
-    display: grid;
-    grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1.12fr);
-    gap: clamp(30px, 5vw, 70px);
-    align-items: start;
-}
-
-.rox-visual-column {
-    display: grid;
-    min-width: 0;
-    gap: 14px;
-    align-content: start;
-}
-
-.rox-scope-panel {
-    overflow: hidden;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    background:
-        radial-gradient(circle at 100% 0, rgba(56, 217, 213, 0.08), transparent 32%),
-        rgba(8, 8, 13, 0.88);
-}
-
-.rox-scope-header {
-    display: flex;
-    min-height: 48px;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    padding: 0 16px;
-    border-bottom: 1px solid var(--line);
-    color: var(--quiet);
-    font-family: ui-monospace, monospace;
-    font-size: 0.56rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-.rox-scope-header p {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--cyan);
-}
-
-.rox-scope-header i {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 12px var(--green);
-}
-
-.rox-scope-list article {
-    display: grid;
-    min-height: 82px;
-    grid-template-columns: 92px minmax(135px, 0.72fr) minmax(180px, 1.28fr);
-    align-items: center;
-    gap: 18px;
-    padding: 13px 16px;
-    border-bottom: 1px solid var(--line);
-    transition: background 220ms ease;
-}
-
-.rox-scope-list article:last-child {
-    border-bottom: 0;
-}
-
-.rox-scope-list article:hover {
-    background: rgba(139, 92, 246, 0.055);
-}
-
-.rox-scope-list span {
-    color: var(--cyan);
-    font-family: ui-monospace, monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-}
-
-.rox-scope-list strong {
-    color: var(--text);
-    font-family: var(--display);
-    font-size: 0.82rem;
-    font-weight: 500;
-}
-
-.rox-scope-list p {
-    color: var(--quiet);
-    font-size: 0.68rem;
-    line-height: 1.55;
-}
-
-#rox + #klema {
-    margin-top: calc(clamp(40px, 6vw, 100px) * -1);
-}
-
-.compact-story {
-    display: flex;
-    flex-direction: column;
-    gap: 44px;
-    justify-content: space-between;
-    padding: clamp(20px, 4vw, 50px) 0;
-}
-
-.compact-story .project-title-block h3 {
-    font-size: clamp(4rem, 8vw, 7rem);
 }
 
 .portrait-stage img {
@@ -2694,19 +2564,6 @@ footer {
     .orbit-four { width: calc(78.588vw - 171.32px); height: calc(78.588vw - 171.32px); }
     .orbit-five { width: calc(93.647vw - 204.15px); height: calc(93.647vw - 204.15px); }
 
-    .project-split {
-        grid-template-columns: 1fr;
-    }
-
-    .rox-scope-panel { display: none; }
-
-    .compact-story {
-        display: grid;
-        grid-template-columns: minmax(250px, 0.8fr) minmax(360px, 1.2fr);
-        gap: 50px;
-        padding: 24px 0 0;
-    }
-
     .portrait-stage img {
         min-height: 0;
         aspect-ratio: 16 / 9;
@@ -2768,7 +2625,6 @@ footer {
     .section-heading,
     .project-story,
     .horizontal-story,
-    .compact-story,
     .about-layout {
         grid-template-columns: 1fr;
     }
@@ -2799,7 +2655,6 @@ footer {
     .map-scene { display: contents; }
 
     .map-field::before,
-    .map-field::after,
     .map-atmosphere,
     .map-core,
     .map-orbits,
@@ -2881,7 +2736,6 @@ footer {
     }
 
     .featured-work { gap: 110px; }
-    #rox + #klema { margin-top: 0; }
     .project-topline { gap: 15px; }
     .project-topline span:last-child { text-align: right; }
     .project-visual { border-radius: 11px; }
@@ -2889,8 +2743,7 @@ footer {
     .feature-media-grid { grid-template-columns: 1fr; }
     .feature-media-grid .project-visual img { aspect-ratio: 16 / 9; }
     .klema-sample-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .windmill-stage,
-    .windmill-rox .windmill-stage { aspect-ratio: 4 / 3; }
+    .windmill-stage { aspect-ratio: 4 / 3; }
     .windmill-slide { inset: 9% 8% 15%; }
     .windmill-controls { grid-template-columns: 1fr; align-items: flex-start; }
     .windmill-actions { grid-column: 1; width: 100%; justify-content: space-between; }
@@ -2906,9 +2759,6 @@ footer {
         justify-content: space-between;
     }
 
-    .project-split { gap: 20px; }
-    .compact-story { gap: 26px; }
-    .compact-story .project-title-block h3 { font-size: 4.5rem; }
     .portrait-stage img { aspect-ratio: 4 / 3; }
 
     .system-media-grid { grid-template-columns: 1fr; }
