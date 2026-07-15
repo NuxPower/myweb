@@ -480,10 +480,10 @@ section {
     --camera-x: 0deg;
     --camera-y: 0deg;
     position: relative;
-    min-height: 570px;
+    min-height: 620px;
     overflow: hidden;
-    perspective: 1050px;
-    perspective-origin: 50% 48%;
+    perspective: 1100px;
+    perspective-origin: 50% 46%;
     transform-style: preserve-3d;
 }
 
@@ -491,7 +491,7 @@ section {
     --scene-scale: 1;
     position: absolute;
     inset: 0;
-    transform: rotateX(var(--camera-x)) rotateY(var(--camera-y)) scale(var(--scene-scale));
+    transform: rotateX(calc(var(--camera-x) - 2deg)) rotateY(var(--camera-y)) scale(var(--scene-scale));
     transform-style: preserve-3d;
     transition: transform 180ms ease-out;
     will-change: transform;
@@ -518,18 +518,22 @@ section {
 .map-field::before {
     inset: 0;
     background:
-        linear-gradient(28deg, transparent 49.9%, rgba(139, 92, 246, 0.14) 50%, transparent 50.15%),
-        linear-gradient(145deg, transparent 49.9%, rgba(56, 217, 213, 0.1) 50%, transparent 50.15%);
-    opacity: 0.7;
+        radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.8) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 76% 31%, rgba(185, 161, 255, 0.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 42% 78%, rgba(56, 217, 213, 0.65) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 88% 81%, rgba(255, 255, 255, 0.65) 0 1px, transparent 1.5px);
+    background-size: 157px 139px, 211px 181px, 263px 229px, 307px 277px;
+    opacity: 0.34;
 }
 
 .map-field::after {
     top: 50%;
     left: 50%;
-    width: 580px;
-    height: 580px;
+    width: 700px;
+    height: 420px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 65%);
+    background: radial-gradient(ellipse, rgba(139, 92, 246, 0.12), rgba(56, 217, 213, 0.025) 38%, transparent 70%);
+    filter: blur(15px);
     transform: translate(-50%, -50%);
 }
 
@@ -541,15 +545,15 @@ section {
 }
 
 .atmosphere-back {
-    top: 6%;
-    left: 14%;
-    width: 72%;
-    height: 88%;
+    top: 10%;
+    left: 11%;
+    width: 78%;
+    height: 80%;
     background:
-        radial-gradient(circle at 35% 28%, rgba(139, 92, 246, 0.16), transparent 30%),
-        radial-gradient(circle at 70% 64%, rgba(56, 217, 213, 0.1), transparent 31%);
-    filter: blur(20px);
-    opacity: 0.8;
+        radial-gradient(circle at 31% 34%, rgba(139, 92, 246, 0.18), transparent 28%),
+        radial-gradient(circle at 73% 61%, rgba(56, 217, 213, 0.11), transparent 27%);
+    filter: blur(28px);
+    opacity: 0.72;
 }
 
 .atmosphere-front {
@@ -563,73 +567,100 @@ section {
     opacity: 0.7;
 }
 
-.map-links {
+.map-orbits {
     position: absolute;
     inset: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
+    z-index: 1;
     pointer-events: none;
+    transform-origin: 50% 50%;
     transform: translate3d(var(--layer-x), var(--layer-y), var(--layer-z));
-}
-
-.map-links path {
-    fill: none;
-    stroke: rgba(185, 161, 255, 0.13);
-    stroke-dasharray: 3 9;
-    stroke-linecap: round;
-    stroke-width: 1;
-    vector-effect: non-scaling-stroke;
-    transition: stroke 260ms ease, stroke-dashoffset 600ms ease, stroke-width 260ms ease;
-}
-
-.map-links path.is-active {
-    stroke: rgba(56, 217, 213, 0.72);
-    stroke-dashoffset: -24;
-    stroke-width: 1.5;
+    transform-style: preserve-3d;
 }
 
 .map-core {
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 3;
-    display: grid;
-    width: 116px;
-    height: 116px;
-    place-content: center;
-    border: 1px solid rgba(185, 161, 255, 0.4);
+    z-index: 20;
+    width: 132px;
+    height: 132px;
     border-radius: 50%;
-    background: rgba(14, 10, 25, 0.92);
-    box-shadow:
-        0 0 0 14px rgba(139, 92, 246, 0.04),
-        0 0 60px rgba(139, 92, 246, 0.22);
-    text-align: center;
     transform: translate3d(
         calc(-50% + var(--layer-x)),
         calc(-50% + var(--layer-y)),
         var(--layer-z)
     );
-    transition: border-color 260ms ease, box-shadow 260ms ease, transform 180ms ease-out;
+    transform-style: preserve-3d;
+    transition: transform 180ms ease-out;
 }
 
-.map-field.has-active-node .map-core {
-    border-color: rgba(56, 217, 213, 0.54);
+.core-sphere {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+    border: 1px solid rgba(220, 207, 255, 0.72);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.92), transparent 7%),
+        radial-gradient(circle at 38% 32%, #b9a1ff 0, #7647d2 24%, #25143f 63%, #0b0912 100%);
     box-shadow:
-        0 0 0 18px rgba(56, 217, 213, 0.035),
-        0 0 75px rgba(56, 217, 213, 0.2);
+        inset -18px -15px 30px rgba(0, 0, 0, 0.48),
+        inset 11px 9px 22px rgba(255, 255, 255, 0.14),
+        0 0 24px rgba(185, 161, 255, 0.48),
+        0 0 90px rgba(139, 92, 246, 0.42);
+    text-align: center;
 }
 
-.map-core span {
+.core-sphere::before {
+    content: '';
+    position: absolute;
+    inset: -35%;
+    background: repeating-linear-gradient(112deg, transparent 0 16px, rgba(255, 255, 255, 0.07) 17px 19px, transparent 20px 31px);
+    animation: core-surface 15s linear infinite;
+    mix-blend-mode: screen;
+}
+
+.core-halo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    border: 1px solid rgba(185, 161, 255, 0.34);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+}
+
+.halo-one {
+    width: 178px;
+    height: 58px;
+    transform: translate3d(-50%, -50%, -4px) rotateZ(-12deg);
+    box-shadow: 0 0 18px rgba(139, 92, 246, 0.16);
+}
+
+.halo-two {
+    width: 52px;
+    height: 174px;
+    border-color: rgba(56, 217, 213, 0.18);
+    transform: translate3d(-50%, -50%, -8px) rotateZ(28deg);
+}
+
+.core-sphere span {
+    position: relative;
+    z-index: 2;
     font-family: var(--display);
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.7rem;
+    font-weight: 700;
     letter-spacing: -0.05em;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.72);
 }
 
-.map-core small {
-    color: var(--quiet);
+.core-sphere small {
+    position: relative;
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.64);
     font-family: ui-monospace, monospace;
     font-size: 0.55rem;
     text-transform: uppercase;
@@ -639,106 +670,184 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 1;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(185, 161, 255, 0.13);
     border-radius: 50%;
-    transform: translate3d(
-        calc(-50% + var(--layer-x)),
-        calc(-50% + var(--layer-y)),
-        var(--layer-z)
-    ) rotate(var(--orbit-rotation, 0deg));
-    transition: border-color 260ms ease, opacity 260ms ease, transform 180ms ease-out;
+    box-shadow: 0 0 18px rgba(139, 92, 246, 0.03);
+    transform: translate3d(-50%, -50%, var(--orbit-z, 0)) rotateX(62deg) rotateZ(var(--orbit-rotation, 0deg)) scaleY(0.635);
+    transform-style: preserve-3d;
+    transition: border-color 260ms ease, opacity 260ms ease;
 }
 
 .orbit-one {
-    --orbit-rotation: -9deg;
-    width: 380px;
-    height: 220px;
+    --orbit-rotation: -4deg;
+    width: 284px;
+    height: 284px;
 }
 
 .orbit-two {
-    --orbit-rotation: 10deg;
-    width: 720px;
-    height: 390px;
+    --orbit-rotation: 2deg;
+    width: 412px;
+    height: 412px;
+}
+
+.orbit-three {
+    --orbit-rotation: -2deg;
+    width: 540px;
+    height: 540px;
+}
+
+.orbit-four {
+    --orbit-rotation: 3deg;
+    width: 668px;
+    height: 668px;
+}
+
+.orbit-five {
+    --orbit-rotation: -3deg;
+    width: 796px;
+    height: 796px;
 }
 
 .map-field.has-active-node .map-orbit {
-    border-color: rgba(56, 217, 213, 0.18);
+    border-color: rgba(56, 217, 213, 0.22);
 }
 
 .map-node {
+    --orbit-x: 0px;
+    --orbit-y: 0px;
+    --orbit-z: 0px;
     position: absolute;
+    top: 50%;
+    left: 50%;
     z-index: 4;
-    display: grid;
-    min-width: 170px;
-    padding: 13px 15px;
-    border: 1px solid var(--line);
-    border-radius: 11px;
-    background: rgba(13, 13, 21, 0.88);
-    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.3);
-    transform: translate3d(var(--layer-x), var(--layer-y), var(--layer-z));
+    width: 38px;
+    height: 38px;
+    transform: translate3d(
+        calc(-50% + var(--layer-x) + var(--orbit-x)),
+        calc(-50% + var(--layer-y) + var(--orbit-y)),
+        calc(var(--layer-z) + var(--orbit-z))
+    );
     transform-style: preserve-3d;
-    transition:
-        border-color 260ms ease,
-        background 260ms ease,
-        box-shadow 260ms ease,
-        filter 260ms ease,
-        opacity 260ms ease,
-        transform 220ms ease-out;
-    backdrop-filter: blur(10px);
     will-change: transform;
 }
 
-.map-node::before {
+.map-planet {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: block;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    background: radial-gradient(circle at 31% 27%, #fff 0 5%, var(--planet-light, #b9a1ff) 7%, var(--planet, #6640b6) 38%, #0d0a17 100%);
+    box-shadow:
+        inset -7px -7px 12px rgba(0, 0, 0, 0.62),
+        0 0 12px var(--planet-glow, rgba(139, 92, 246, 0.55));
+    transition: box-shadow 260ms ease, transform 260ms var(--ease-out);
+}
+
+.map-planet::after {
     content: '';
     position: absolute;
-    top: 50%;
-    left: -5px;
-    width: 9px;
-    height: 9px;
+    inset: 8px -7px;
+    border: 1px solid rgba(255, 255, 255, 0.34);
     border-radius: 50%;
-    background: var(--purple);
-    box-shadow: 0 0 12px var(--purple);
-    transform: translateY(-50%);
+    transform: rotate(-18deg);
+}
+
+.map-planet i {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.16) 48%, transparent 56%);
+}
+
+.planet-rox {
+    --planet-light: #7fe7e2;
+    --planet: #167c86;
+    --planet-glow: rgba(56, 217, 213, 0.52);
+}
+
+.planet-klema {
+    --planet-light: #a4e7ff;
+    --planet: #3476ad;
+    --planet-glow: rgba(82, 168, 240, 0.52);
+}
+
+.planet-lucker {
+    --planet-light: #f3c982;
+    --planet: #9e5d38;
+    --planet-glow: rgba(223, 143, 80, 0.48);
+}
+
+.planet-agritrade {
+    --planet-light: #8cf0b9;
+    --planet: #2d8d63;
+    --planet-glow: rgba(100, 230, 166, 0.5);
+}
+
+.node-info {
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    z-index: 4;
+    display: grid;
+    width: max-content;
+    min-width: 154px;
+    padding: 10px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9px;
+    background: rgba(10, 10, 17, 0.83);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.34);
+    opacity: 0.78;
+    transform: translateX(-50%);
+    transition: border-color 240ms ease, background 240ms ease, box-shadow 240ms ease, opacity 240ms ease, transform 240ms var(--ease-out);
+    backdrop-filter: blur(12px);
 }
 
 .map-node:hover,
 .map-node:focus-visible,
 .map-node.is-active {
-    z-index: 8;
-    border-color: rgba(185, 161, 255, 0.55);
-    background: rgba(28, 20, 46, 0.94);
     box-shadow: 0 18px 50px rgba(62, 32, 123, 0.35);
     outline: none;
-    transform: translate3d(
-        var(--layer-x),
-        calc(var(--layer-y) - 7px),
-        calc(var(--layer-z) + 32px)
-    ) scale(1.035);
 }
 
-.map-node.is-selected {
+.map-node:hover .map-planet,
+.map-node:focus-visible .map-planet,
+.map-node.is-active .map-planet {
+    box-shadow:
+        inset -7px -7px 12px rgba(0, 0, 0, 0.5),
+        0 0 8px var(--planet-light),
+        0 0 28px var(--planet-glow);
+    transform: scale(1.18);
+}
+
+.map-node:hover .node-info,
+.map-node:focus-visible .node-info,
+.map-node.is-active .node-info {
+    border-color: rgba(185, 161, 255, 0.58);
+    background: rgba(24, 18, 39, 0.95);
+    box-shadow: 0 18px 50px rgba(62, 32, 123, 0.38);
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px) scale(1.035);
+}
+
+.map-node.is-selected .node-info {
     border-color: rgba(56, 217, 213, 0.75);
     box-shadow: 0 24px 70px rgba(25, 111, 116, 0.34);
-    transform: translate3d(
-        var(--layer-x),
-        calc(var(--layer-y) - 10px),
-        calc(var(--layer-z) + 54px)
-    ) scale(1.07);
 }
 
 .map-field.has-active-node .map-node:not(.is-active):not(.is-selected) {
     filter: saturate(0.55) brightness(0.62);
-    opacity: 0.42;
+    opacity: 0.38;
 }
 
-.map-node strong {
+.node-info strong {
     font-family: var(--display);
     font-size: 0.86rem;
     letter-spacing: 0.04em;
 }
 
-.map-node small,
+.node-info small,
 .node-index {
     color: var(--quiet);
     font-family: ui-monospace, monospace;
@@ -774,15 +883,14 @@ section {
     top: -8px;
     right: 10px;
     padding: 1px 6px;
-    background: var(--bg-soft);
+    border-radius: 3px;
+    background: #0b0b12;
     color: var(--cyan);
 }
 
-.node-anibukid { top: 13%; left: 8%; }
-.node-rox { top: 15%; right: 8%; }
-.node-klema { right: 13%; bottom: 12%; }
-.node-lucker { bottom: 10%; left: 12%; }
-.node-agritrade { top: 47%; right: 2%; }
+@keyframes core-surface {
+    to { transform: translateX(31px) rotate(4deg); }
+}
 
 .map-instruction {
     position: absolute;
@@ -2578,9 +2686,13 @@ footer {
 @media (max-width: 1024px) {
     .nav-links { gap: 1.2rem; }
 
-    .map-field { min-height: 500px; }
-    .orbit-two { width: 600px; }
-    .node-agritrade { right: 3%; }
+    .map-field { min-height: 560px; }
+
+    .orbit-one { width: calc(33.412vw - 72.86px); height: calc(33.412vw - 72.86px); }
+    .orbit-two { width: calc(48.471vw - 105.65px); height: calc(48.471vw - 105.65px); }
+    .orbit-three { width: calc(63.529vw - 138.47px); height: calc(63.529vw - 138.47px); }
+    .orbit-four { width: calc(78.588vw - 171.32px); height: calc(78.588vw - 171.32px); }
+    .orbit-five { width: calc(93.647vw - 204.15px); height: calc(93.647vw - 204.15px); }
 
     .project-split {
         grid-template-columns: 1fr;
@@ -2689,9 +2801,8 @@ footer {
     .map-field::before,
     .map-field::after,
     .map-atmosphere,
-    .map-links,
     .map-core,
-    .map-orbit,
+    .map-orbits,
     .map-instruction {
         display: none;
     }
@@ -2707,9 +2818,46 @@ footer {
         right: auto;
         bottom: auto;
         left: auto;
+        display: grid;
         width: 100%;
+        height: auto;
         min-width: 0;
+        min-height: 74px;
+        grid-template-columns: 42px 1fr;
+        align-items: center;
+        gap: 14px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 11px;
+        background: rgba(13, 13, 21, 0.84);
         transform: none;
+    }
+
+    .map-planet {
+        position: relative;
+        inset: auto;
+        width: 38px;
+        height: 38px;
+    }
+
+    .node-info {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: auto;
+        min-width: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        opacity: 1;
+        transform: none;
+        backdrop-filter: none;
+    }
+
+    .node-index {
+        top: -7px;
+        right: 0;
     }
 
     .map-node:hover,
@@ -2717,6 +2865,19 @@ footer {
     .map-node.is-active,
     .map-node.is-selected {
         transform: translateY(-2px);
+    }
+
+    .map-node:hover .node-info,
+    .map-node:focus-visible .node-info,
+    .map-node.is-active .node-info {
+        border-color: transparent;
+        background: transparent;
+        box-shadow: none;
+        transform: none;
+    }
+
+    .map-field.has-active-node .map-node:not(.is-active):not(.is-selected) {
+        opacity: 0.58;
     }
 
     .featured-work { gap: 110px; }

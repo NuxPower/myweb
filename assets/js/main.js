@@ -109,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mapField) {
         const depthLayers = [...mapField.querySelectorAll('[data-depth]')];
         const mapNodes = [...mapField.querySelectorAll('.map-node')];
-        const mapLinks = [...mapField.querySelectorAll('[data-link]')];
         const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
         let targetX = 0;
         let targetY = 0;
@@ -117,6 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentY = 0;
         let animationFrame = null;
         let selectedNode = null;
+        let orbitAnimationFrame = null;
+        let orbitElapsed = 0;
+        let lastOrbitTimestamp = 0;
+        let orbitPaused = false;
+        let mapIsVisible = true;
 
         depthLayers.forEach(layer => {
             const z = Number(layer.dataset.z) || 0;
@@ -125,6 +129,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function depthIsEnabled() {
             return !prefersReducedMotion && finePointer.matches && window.innerWidth > 768;
+        }
+
+        function orbitIsEnabled() {
+            return !prefersReducedMotion && !orbitPaused && window.innerWidth > 768
+                && mapIsVisible && !document.hidden;
+        }
+
+        function positionOrbitingNodes() {
+            const availableWidth = mapField.clientWidth;
+            const systemScale = Math.min(1, Math.max(0.66, (availableWidth - 170) / 850));
+
+            mapNodes.forEach((node, index) => {
+                const radius = (Number(node.dataset.orbit) || 140 + index * 64) * systemScale;
+                const phase = (Number(node.dataset.phase) || index * 72) * Math.PI / 180;
+                const duration = (Number(node.dataset.speed) || 28) * 1000;
+                const angle = phase + (orbitElapsed / duration) * Math.PI * 2;
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius * 0.3;
+                const z = Math.sin(angle) * radius * 0.56;
+
+                node.style.setProperty('--orbit-x', `${x.toFixed(2)}px`);
+                node.style.setProperty('--orbit-y', `${y.toFixed(2)}px`);
+                node.style.setProperty('--orbit-z', `${z.toFixed(2)}px`);
+                node.style.zIndex = String(Math.max(2, Math.round(20 + z / 10)));
+            });
+        }
+
+        function renderOrbits(timestamp) {
+            if (!orbitIsEnabled()) {
+                orbitAnimationFrame = null;
+                lastOrbitTimestamp = 0;
+                return;
+            }
+
+            if (lastOrbitTimestamp && !orbitPaused) {
+                orbitElapsed += Math.min(timestamp - lastOrbitTimestamp, 50);
+            }
+            lastOrbitTimestamp = timestamp;
+            positionOrbitingNodes();
+            orbitAnimationFrame = window.requestAnimationFrame(renderOrbits);
+        }
+
+        function queueOrbitRender() {
+            positionOrbitingNodes();
+            if (orbitIsEnabled() && !orbitAnimationFrame) {
+                orbitAnimationFrame = window.requestAnimationFrame(renderOrbits);
+            }
+        }
+
+        function setOrbitPaused(paused) {
+            orbitPaused = paused;
+            mapField.classList.toggle('is-orbit-paused', paused);
+            lastOrbitTimestamp = 0;
+            if (paused && orbitAnimationFrame) {
+                window.cancelAnimationFrame(orbitAnimationFrame);
+                orbitAnimationFrame = null;
+            }
+            if (!paused) queueOrbitRender();
         }
 
         function renderDepth() {
@@ -164,7 +226,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const key = node?.dataset.node;
             mapField.classList.toggle('has-active-node', Boolean(key));
             mapNodes.forEach(item => item.classList.toggle('is-active', item === node));
-            mapLinks.forEach(link => link.classList.toggle('is-active', link.dataset.link === key));
         }
 
         function clearActiveNode(force = false) {
@@ -182,18 +243,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mapField.addEventListener('pointerleave', () => {
             resetDepth();
+            if (!selectedNode) setOrbitPaused(false);
             clearActiveNode();
         });
 
         mapNodes.forEach(node => {
             node.addEventListener('pointerenter', () => {
+                setOrbitPaused(true);
                 if (!selectedNode) setActiveNode(node);
             });
-            node.addEventListener('pointerleave', () => clearActiveNode());
+            node.addEventListener('pointerleave', () => {
+                if (!selectedNode) setOrbitPaused(false);
+                clearActiveNode();
+            });
             node.addEventListener('focus', () => {
+                setOrbitPaused(true);
                 if (!selectedNode) setActiveNode(node);
             });
-            node.addEventListener('blur', () => clearActiveNode());
+            node.addEventListener('blur', () => {
+                if (!selectedNode) setOrbitPaused(false);
+                clearActiveNode();
+            });
             node.addEventListener('click', event => {
                 const target = document.querySelector(node.getAttribute('href'));
                 if (!target) return;
@@ -217,6 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     node.classList.remove('is-selected');
                     mapField.classList.remove('is-focusing');
                     selectedNode = null;
+                    setOrbitPaused(false);
                     clearActiveNode(true);
                     resetDepth();
                 }, prefersReducedMotion ? 0 : resetDelay);
@@ -225,7 +296,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.addEventListener('resize', () => {
             if (!depthIsEnabled()) resetDepth();
+            queueOrbitRender();
         });
+
+        if ('IntersectionObserver' in window) {
+            const mapVisibilityObserver = new IntersectionObserver(entries => {
+                mapIsVisible = entries[0]?.isIntersecting ?? true;
+                if (mapIsVisible) queueOrbitRender();
+            }, { rootMargin: '180px 0px' });
+            mapVisibilityObserver.observe(mapField);
+        }
+
+        document.addEventListener('visibilitychange', queueOrbitRender);
+        queueOrbitRender();
     }
 
     if (typeof particlesJS !== 'undefined' && !prefersReducedMotion) {
