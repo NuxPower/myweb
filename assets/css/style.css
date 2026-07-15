@@ -2386,8 +2386,10 @@ footer {
     inset: 0;
     z-index: 5000;
     display: none;
-    grid-template-rows: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    align-content: safe center;
     gap: 18px;
+    overflow-y: auto;
     padding: clamp(24px, 5vw, 70px);
     background: rgba(3, 3, 6, 0.94);
     opacity: 0;
@@ -2405,11 +2407,12 @@ footer {
 
 .modal-stage {
     display: grid;
-    min-height: 0;
     place-items: center;
 }
 
 .modal-content {
+    width: auto;
+    height: auto;
     max-width: min(1100px, 100%);
     max-height: 72vh;
     border: 1px solid var(--line-strong);

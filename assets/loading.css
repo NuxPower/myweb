@@ -101,37 +101,188 @@
     }
 }
 
-.welcome-text {
+.name-reveal {
     position: absolute;
     top: 50%;
     left: 50%;
     z-index: 100;
-    width: min(90%, 700px);
-    color: #fff;
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(1.55rem, 5vw, 2.5rem);
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    text-align: center;
-    text-shadow: 0 0 22px rgba(108, 92, 231, 0.7);
+    width: min(94vw, 1200px);
     opacity: 0;
-    filter: blur(8px);
-    transform: translate(-50%, -42%) scale(0.98);
+    filter: blur(6px);
+    transform: translate(-50%, -50%) scale(0.985);
     transition:
-        opacity 1.7s ease,
-        filter 1.7s ease,
-        transform 1.7s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 0.4s ease,
+        filter 0.7s ease,
+        transform 1.45s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
 }
 
-.welcome-text.visible {
+.name-reveal.visible {
     opacity: 1;
     filter: blur(0);
     transform: translate(-50%, -50%) scale(1);
 }
 
-.welcome-text.leaving {
-    transition-duration: 0.9s;
+.name-reveal.leaving {
+    opacity: 0;
+    filter: blur(9px);
+    transform: translate(-50%, -50%) scale(1.018);
+    transition-duration: 0.8s;
+}
+
+.name-aperture {
+    display: block;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 0%;
+    mask-size: 100% 0%;
+}
+
+.name-reveal.visible .name-aperture {
+    animation: nameShadowOpen 1.55s cubic-bezier(0.65, 0, 0.2, 1) forwards;
+}
+
+.name-art {
+    display: block;
+    width: 100%;
+    overflow: visible;
+}
+
+.name-glyph {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: 130px;
+    font-weight: 500;
+    letter-spacing: 5px;
+}
+
+.name-trail,
+.name-trace {
+    fill: none;
+    vector-effect: non-scaling-stroke;
+    stroke: url(#name-trace-gradient);
+    stroke-linecap: round;
+}
+
+.name-trail {
+    stroke-width: 1.5;
+    stroke-dasharray: 900 900;
+    stroke-dashoffset: 900;
+    filter: drop-shadow(0 0 5px rgba(53, 242, 237, 0.58)) drop-shadow(0 0 10px rgba(108, 92, 231, 0.48));
+}
+
+.name-trace {
+    stroke-width: 2.65;
+    stroke-dasharray: 30 870;
+    stroke-dashoffset: 900;
+    filter: drop-shadow(0 0 4px rgba(53, 242, 237, 0.95)) drop-shadow(0 0 11px rgba(108, 92, 231, 0.8));
+}
+
+.name-char {
+    opacity: 0;
+}
+
+.name-reveal.visible .name-trail .name-char {
+    animation: nameLightTrail 5.3s linear calc(0.2s + var(--light-delay, 0s)) forwards;
+}
+
+.name-reveal.visible .name-trace .name-char {
+    animation: nameLightStreak 1.8s linear calc(0.12s + var(--light-delay, 0s)) forwards;
+}
+
+@keyframes nameShadowOpen {
+    0% {
+        -webkit-mask-size: 100% 0%;
+        mask-size: 100% 0%;
+    }
+
+    100% {
+        -webkit-mask-size: 100% 145%;
+        mask-size: 100% 145%;
+    }
+}
+
+@keyframes nameLightTrail {
+    0% {
+        stroke-dashoffset: 900;
+        opacity: 0;
+    }
+
+    3% {
+        stroke-dashoffset: 895;
+        opacity: 0.78;
+    }
+
+    10% {
+        stroke-dashoffset: 820;
+        opacity: 0.78;
+    }
+
+    21% {
+        stroke-dashoffset: 560;
+        opacity: 0.78;
+    }
+
+    32%, 77% {
+        stroke-dashoffset: 0;
+        opacity: 0.78;
+    }
+
+    96% {
+        stroke-dashoffset: -900;
+        opacity: 0.16;
+    }
+
+    97%, 100% {
+        stroke-dashoffset: -900;
+        opacity: 0;
+    }
+}
+
+@keyframes nameLightStreak {
+    0% {
+        stroke-dashoffset: 900;
+        opacity: 0;
+    }
+
+    8% {
+        stroke-dashoffset: 895;
+        opacity: 1;
+    }
+
+    30% {
+        stroke-dashoffset: 820;
+        opacity: 1;
+    }
+
+    60% {
+        stroke-dashoffset: 560;
+        opacity: 1;
+    }
+
+    92% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+
+    100% {
+        stroke-dashoffset: -36;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 520px) {
+    .name-reveal {
+        width: 98vw;
+    }
+
+    .name-glyph {
+        font-size: 124px;
+        letter-spacing: 4px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -141,7 +292,14 @@
     }
 
     .loading-screen,
-    .welcome-text {
+    .name-reveal {
         transition-duration: 0.01ms;
+    }
+
+    .name-reveal.visible .name-aperture,
+    .name-reveal.visible .name-trail .name-char,
+    .name-reveal.visible .name-trace .name-char {
+        animation-duration: 0.01ms;
+        animation-delay: 0s;
     }
 }
