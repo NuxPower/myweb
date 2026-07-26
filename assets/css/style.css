@@ -1278,15 +1278,8 @@ section {
     padding: 6px 0 46px;
 }
 
-.archive-group[open] .archive-group-panel {
-    animation: archiveGroupReveal 450ms var(--ease-out);
-}
-
-@keyframes archiveGroupReveal {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
+.archive-group.is-collapsing .archive-group-meta b {
+    transform: none;
 }
 
 .archive-media-grid {

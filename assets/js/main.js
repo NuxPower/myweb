@@ -101,6 +101,70 @@ document.addEventListener('DOMContentLoaded', () => {
         observedSections.forEach(section => sectionObserver.observe(section));
     }
 
+    document.querySelectorAll('.archive-group').forEach(group => {
+        const summary = group.querySelector('summary');
+        const panel = group.querySelector('.archive-group-panel');
+        if (!summary || !panel) return;
+
+        const baseStyles = getComputedStyle(panel);
+        const basePaddingTop = baseStyles.paddingTop;
+        const basePaddingBottom = baseStyles.paddingBottom;
+        let animation = null;
+
+        function animatePanel(expanding) {
+            const interrupted = Boolean(animation);
+            const currentStyles = getComputedStyle(panel);
+            const startHeight = interrupted
+                ? panel.getBoundingClientRect().height
+                : (expanding ? 0 : panel.offsetHeight);
+            const startPaddingTop = interrupted ? currentStyles.paddingTop : (expanding ? '0px' : basePaddingTop);
+            const startPaddingBottom = interrupted ? currentStyles.paddingBottom : (expanding ? '0px' : basePaddingBottom);
+            const startOpacity = interrupted ? currentStyles.opacity : (expanding ? 0 : 1);
+
+            animation?.cancel();
+            if (expanding) group.open = true;
+            group.classList.toggle('is-collapsing', !expanding);
+
+            const endHeight = expanding ? panel.offsetHeight : 0;
+            const duration = expanding ? 480 : 380;
+            panel.style.overflow = 'hidden';
+            const currentAnimation = panel.animate({
+                height: [`${startHeight}px`, `${endHeight}px`],
+                paddingTop: [startPaddingTop, expanding ? basePaddingTop : '0px'],
+                paddingBottom: [startPaddingBottom, expanding ? basePaddingBottom : '0px'],
+                opacity: [startOpacity, expanding ? 1 : 0]
+            }, {
+                duration,
+                easing: 'cubic-bezier(0.33, 1, 0.68, 1)'
+            });
+            animation = currentAnimation;
+
+            function settlePanel() {
+                if (animation !== currentAnimation) return;
+                panel.style.overflow = '';
+                if (!expanding) group.open = false;
+                group.classList.remove('is-collapsing');
+                animation = null;
+            }
+
+            currentAnimation.onfinish = settlePanel;
+            window.setTimeout(settlePanel, duration + 80);
+        }
+
+        summary.addEventListener('click', event => {
+            event.preventDefault();
+
+            const expanding = group.classList.contains('is-collapsing') || !group.open;
+
+            if (prefersReducedMotion) {
+                group.open = expanding;
+                return;
+            }
+
+            animatePanel(expanding);
+        });
+    });
+
     if (typeof particlesJS !== 'undefined' && !prefersReducedMotion) {
         particlesJS('particles-js', {
             particles: {
