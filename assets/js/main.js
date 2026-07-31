@@ -29,17 +29,48 @@ document.addEventListener('DOMContentLoaded', () => {
         return particleThemes[theme === 'paper' ? 'paper' : 'dark'];
     }
 
+    function hexToRgb(hex) {
+        const value = Number.parseInt(hex.slice(1), 16);
+        return {
+            r: (value >> 16) & 255,
+            g: (value >> 8) & 255,
+            b: value & 255
+        };
+    }
+
+    function getClosestPaletteIndex(color, palette) {
+        return palette.reduce((closest, candidate, index) => {
+            const distance =
+                (color.r - candidate.r) ** 2 +
+                (color.g - candidate.g) ** 2 +
+                (color.b - candidate.b) ** 2;
+
+            return distance < closest.distance ? { index, distance } : closest;
+        }, { index: 0, distance: Number.POSITIVE_INFINITY }).index;
+    }
+
     function updateParticleTheme(theme) {
         const particleInstance = window.pJSDom?.[0]?.pJS;
         if (!particleInstance) return;
 
         const settings = getParticleTheme(theme);
+        const previousColors = particleInstance.particles.color.value.map(hexToRgb);
+        const nextColors = settings.colors.map(hexToRgb);
+        const previousOpacity = particleInstance.particles.opacity.value;
+
+        particleInstance.particles.array.forEach(particle => {
+            const colorIndex = getClosestPaletteIndex(particle.color.rgb, previousColors);
+            const opacityRatio = previousOpacity > 0 ? particle.opacity.value / previousOpacity : 1;
+
+            particle.color.rgb = { ...nextColors[colorIndex % nextColors.length] };
+            particle.opacity.value = Math.min(opacityRatio, 1) * settings.opacity;
+        });
+
         particleInstance.particles.color.value = [...settings.colors];
         particleInstance.particles.opacity.value = settings.opacity;
         particleInstance.particles.line_linked.color = settings.lineColor;
         particleInstance.particles.line_linked.opacity = settings.lineOpacity;
         particleInstance.interactivity.modes.grab.line_linked.opacity = settings.grabOpacity;
-        particleInstance.fn.particlesRefresh();
     }
 
     function updateThemeControl(theme) {
