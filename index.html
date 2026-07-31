@@ -7,6 +7,16 @@
     <meta name="description"
         content="Portfolio of Yohan Lukin Callanta, a full-stack and cross-platform software developer based in the Philippines.">
     <meta name="theme-color" content="#06060a">
+    <script>
+        try {
+            if (localStorage.getItem('portfolio-theme') === 'paper') {
+                document.documentElement.dataset.theme = 'paper';
+                document.querySelector('meta[name="theme-color"]').content = '#f4f4f0';
+            }
+        } catch (error) {
+            // Storage can be unavailable in privacy-restricted browsing contexts.
+        }
+    </script>
     <title>Yohan Lukin Callanta — Software Engineer</title>
 
     <meta property="og:type" content="website">
@@ -68,6 +78,12 @@
             </div>
 
             <div class="menu-overlay"></div>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to black and white theme"
+                aria-pressed="false" title="Switch to black and white theme">
+                <span class="theme-toggle-track" aria-hidden="true">
+                    <span class="theme-toggle-dot"></span>
+                </span>
+            </button>
             <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
                 <span></span>
                 <span></span>
