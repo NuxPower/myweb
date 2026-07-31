@@ -11,16 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const particleThemes = {
         dark: {
             colors: ['#8b5cf6', '#38d9d5', '#d7d2e4'],
-            opacity: 0.22,
+            opacity: 0.34,
             lineColor: '#8b5cf6',
-            lineOpacity: 0.12,
+            lineOpacity: 0.14,
             grabOpacity: 0.35
         },
         paper: {
             colors: ['#5b21b6', '#0e7490', '#4b4b55'],
-            opacity: 0.42,
+            opacity: 0.5,
             lineColor: '#6d28d9',
-            lineOpacity: 0.22,
+            lineOpacity: 0.24,
             grabOpacity: 0.5
         }
     };
@@ -255,12 +255,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const initialParticleTheme = getParticleTheme(
             document.documentElement.dataset.theme === 'paper' ? 'paper' : 'dark'
         );
+        const particleCount = window.innerWidth < 768 ? 56 : window.innerWidth < 1200 ? 68 : 82;
 
         particlesJS('particles-js', {
             particles: {
                 number: {
-                    value: window.innerWidth < 768 ? 28 : 48,
-                    density: { enable: true, value_area: 1000 }
+                    value: particleCount,
+                    density: { enable: true, value_area: 850 }
                 },
                 color: { value: initialParticleTheme.colors },
                 shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
@@ -268,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 size: { value: 2.4, random: true, anim: { enable: false } },
                 line_linked: {
                     enable: true,
-                    distance: 165,
+                    distance: 135,
                     color: initialParticleTheme.lineColor,
                     opacity: initialParticleTheme.lineOpacity,
                     width: 1
@@ -292,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 modes: {
                     grab: { distance: 150, line_linked: { opacity: initialParticleTheme.grabOpacity } },
-                    push: { particles_nb: 2 }
+                    push: { particles_nb: 4 }
                 }
             },
             retina_detect: true
