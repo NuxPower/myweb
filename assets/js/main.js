@@ -6,6 +6,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
     const menuOverlay = document.querySelector('.menu-overlay');
     const navbar = document.querySelector('nav');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+
+    function updateThemeControl(theme) {
+        const usesPaperTheme = theme === 'paper';
+        const label = usesPaperTheme ? 'Switch to dark theme' : 'Switch to black and white theme';
+
+        themeToggle?.setAttribute('aria-pressed', String(usesPaperTheme));
+        themeToggle?.setAttribute('aria-label', label);
+        themeToggle?.setAttribute('title', label);
+        if (themeColor) themeColor.content = usesPaperTheme ? '#f4f4f0' : '#06060a';
+    }
+
+    function setTheme(theme) {
+        if (theme === 'paper') {
+            document.documentElement.dataset.theme = 'paper';
+        } else {
+            delete document.documentElement.dataset.theme;
+        }
+
+        updateThemeControl(theme);
+
+        try {
+            localStorage.setItem('portfolio-theme', theme);
+        } catch (error) {
+            // The visual preference still works for this page view without storage.
+        }
+    }
+
+    updateThemeControl(document.documentElement.dataset.theme === 'paper' ? 'paper' : 'dark');
+
+    themeToggle?.addEventListener('click', event => {
+        const nextTheme = document.documentElement.dataset.theme === 'paper' ? 'dark' : 'paper';
+
+        if (prefersReducedMotion || !document.startViewTransition) {
+            setTheme(nextTheme);
+            return;
+        }
+
+        const origin = themeToggle.getBoundingClientRect();
+        const x = event.clientX || origin.left + origin.width / 2;
+        const y = event.clientY || origin.top + origin.height / 2;
+        const radius = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+        );
+
+        document.documentElement.style.setProperty('--theme-x', `${x}px`);
+        document.documentElement.style.setProperty('--theme-y', `${y}px`);
+        document.documentElement.style.setProperty('--theme-radius', `${radius}px`);
+        document.startViewTransition(() => setTheme(nextTheme));
+    });
 
     function setMenu(open) {
         menuToggle?.classList.toggle('active', open);

@@ -146,6 +146,59 @@ nav.scrolled {
     justify-content: space-between;
 }
 
+.theme-toggle {
+    position: relative;
+    z-index: 1002;
+    display: grid;
+    width: 48px;
+    height: 28px;
+    margin-left: auto;
+    margin-right: 1.6rem;
+    place-items: center;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.theme-toggle-track {
+    position: relative;
+    display: block;
+    width: 44px;
+    height: 24px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--surface-solid);
+    transition: border-color 220ms ease, background 220ms ease;
+}
+
+.theme-toggle-dot {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--text);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+    transition: transform 360ms var(--ease-out), background 220ms ease, box-shadow 220ms ease;
+}
+
+.theme-toggle:hover .theme-toggle-track {
+    border-color: var(--text);
+}
+
+.theme-toggle:focus-visible {
+    border-radius: 999px;
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+}
+
+html[data-theme="paper"] .theme-toggle-dot {
+    background: #111111;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+    transform: translateX(20px);
+}
+
 .logo h1 {
     font-size: 1.2rem;
     letter-spacing: -0.03em;
@@ -2369,6 +2422,186 @@ footer {
     .project-topline { font-size: 0.56rem; }
     .visual-action { right: 10px; bottom: 10px; }
     .phone-visual { height: 400px; }
+}
+
+/* Paper / ink theme and click-origin theme reveal */
+html[data-theme="paper"] {
+    color-scheme: light;
+    --bg: #f4f4f0;
+    --bg-soft: #ecece7;
+    --surface: rgba(255, 255, 252, 0.82);
+    --surface-solid: #ffffff;
+    --line: rgba(17, 17, 17, 0.13);
+    --line-strong: rgba(17, 17, 17, 0.28);
+    --text: #111111;
+    --muted: #4e4e4a;
+    --quiet: #73736d;
+    --purple: #111111;
+    --purple-light: #343432;
+    --cyan: #1d1d1b;
+    --green: #4d4d49;
+}
+
+html[data-theme="paper"] body {
+    background:
+        radial-gradient(circle at 50% -10%, rgba(0, 0, 0, 0.07), transparent 34rem),
+        var(--bg);
+}
+
+html[data-theme="paper"] .site-grid {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+}
+
+html[data-theme="paper"] nav.scrolled {
+    background: rgba(244, 244, 240, 0.82);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="paper"] .logo h1 {
+    background: linear-gradient(100deg, #111111, #73736d);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+html[data-theme="paper"] .nav-links a:hover,
+html[data-theme="paper"] .nav-links a.active,
+html[data-theme="paper"] .text-link:hover,
+html[data-theme="paper"] .windmill-actions button:hover,
+html[data-theme="paper"] .windmill-actions button:focus-visible,
+html[data-theme="paper"] .archive-fade-actions button:hover,
+html[data-theme="paper"] .archive-fade-actions button:focus-visible,
+html[data-theme="paper"] #caption .modal-document-link:hover,
+html[data-theme="paper"] #caption .modal-document-link:focus-visible {
+    color: #111111;
+}
+
+html[data-theme="paper"] .menu-toggle span {
+    background: #111111;
+}
+
+html[data-theme="paper"] .work-section {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.045), transparent 36rem);
+}
+
+html[data-theme="paper"] .windmill-gallery,
+html[data-theme="paper"] .archive-media-card {
+    background: rgba(255, 255, 252, 0.9);
+    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme="paper"] .windmill-stage {
+    background:
+        radial-gradient(circle at 50% 115%, rgba(0, 0, 0, 0.12), transparent 43%),
+        linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+        #e8e8e3;
+    background-size: auto, 36px 36px, 36px 36px, auto;
+}
+
+html[data-theme="paper"] .windmill-stage::after,
+html[data-theme="paper"] .windmill-slide,
+html[data-theme="paper"] .collage-phone {
+    border-color: var(--line-strong);
+    background: #ffffff;
+}
+
+html[data-theme="paper"] .windmill-controls,
+html[data-theme="paper"] .archive-fade-toolbar,
+html[data-theme="paper"] .project-facts div {
+    background: rgba(249, 249, 246, 0.98);
+}
+
+html[data-theme="paper"] .gallery-action-inline,
+html[data-theme="paper"] .archive-fade-actions button,
+html[data-theme="paper"] .windmill-actions button,
+html[data-theme="paper"] .tech-list li,
+html[data-theme="paper"] .capability-grid article,
+html[data-theme="paper"] .archive-list article {
+    background: rgba(255, 255, 255, 0.52);
+}
+
+html[data-theme="paper"] .archive-list article:hover,
+html[data-theme="paper"] .capability-grid article:hover {
+    background: rgba(0, 0, 0, 0.055);
+}
+
+html[data-theme="paper"] .experience-section {
+    background: rgba(238, 238, 233, 0.72);
+}
+
+html[data-theme="paper"] .contact-section {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.025), rgba(226, 226, 220, 0.8));
+}
+
+html[data-theme="paper"] .contact-email {
+    color: rgba(0, 0, 0, 0.12);
+}
+
+html[data-theme="paper"] .contact-email:hover {
+    color: rgba(0, 0, 0, 0.68);
+}
+
+html[data-theme="paper"] footer {
+    background: #e8e8e3;
+}
+
+html[data-theme="paper"] .modal {
+    background: rgba(244, 244, 240, 0.96);
+}
+
+html[data-theme="paper"] .close,
+html[data-theme="paper"] .modal-nav,
+html[data-theme="paper"] #scroll-to-top {
+    background: rgba(255, 255, 252, 0.88);
+    color: #111111;
+}
+
+html[data-theme="paper"] .modal-nav:hover,
+html[data-theme="paper"] .modal-nav:focus-visible {
+    background: #ffffff;
+}
+
+html[data-theme="paper"] img,
+html[data-theme="paper"] #particles-js canvas {
+    filter: grayscale(1);
+}
+
+html[data-theme="paper"] .visual-action,
+html[data-theme="paper"] .archive-media-card > button::after,
+html[data-theme="paper"] .credential-card.credential-pdf::before {
+    border-color: rgba(255, 255, 255, 0.24);
+    background: rgba(10, 10, 10, 0.76);
+    color: #f4f4f0;
+}
+
+html[data-theme="paper"] .visual-action i,
+html[data-theme="paper"] .credential-card.credential-pdf::before {
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .theme-toggle { margin-right: 0.85rem; }
+
+    html[data-theme="paper"] .nav-links {
+        background: rgba(244, 244, 240, 0.98);
+    }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+    clip-path: circle(0 at var(--theme-x) var(--theme-y));
+    animation: theme-ripple 1100ms cubic-bezier(0.55, 0.055, 0.675, 0.19) both;
+}
+
+@keyframes theme-ripple {
+    to { clip-path: circle(var(--theme-radius) at var(--theme-x) var(--theme-y)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
