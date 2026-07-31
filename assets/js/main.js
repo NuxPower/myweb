@@ -8,6 +8,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('nav');
     const themeToggle = document.getElementById('theme-toggle');
     const themeColor = document.querySelector('meta[name="theme-color"]');
+    const particleThemes = {
+        dark: {
+            colors: ['#8b5cf6', '#38d9d5', '#d7d2e4'],
+            opacity: 0.22,
+            lineColor: '#8b5cf6',
+            lineOpacity: 0.12,
+            grabOpacity: 0.35
+        },
+        paper: {
+            colors: ['#5b21b6', '#0e7490', '#4b4b55'],
+            opacity: 0.42,
+            lineColor: '#6d28d9',
+            lineOpacity: 0.22,
+            grabOpacity: 0.5
+        }
+    };
+
+    function getParticleTheme(theme) {
+        return particleThemes[theme === 'paper' ? 'paper' : 'dark'];
+    }
+
+    function updateParticleTheme(theme) {
+        const particleInstance = window.pJSDom?.[0]?.pJS;
+        if (!particleInstance) return;
+
+        const settings = getParticleTheme(theme);
+        particleInstance.particles.color.value = [...settings.colors];
+        particleInstance.particles.opacity.value = settings.opacity;
+        particleInstance.particles.line_linked.color = settings.lineColor;
+        particleInstance.particles.line_linked.opacity = settings.lineOpacity;
+        particleInstance.interactivity.modes.grab.line_linked.opacity = settings.grabOpacity;
+        particleInstance.fn.particlesRefresh();
+    }
 
     function updateThemeControl(theme) {
         const usesPaperTheme = theme === 'paper';
@@ -27,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         updateThemeControl(theme);
+        updateParticleTheme(theme);
 
         try {
             localStorage.setItem('portfolio-theme', theme);
@@ -218,21 +252,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (typeof particlesJS !== 'undefined' && !prefersReducedMotion) {
+        const initialParticleTheme = getParticleTheme(
+            document.documentElement.dataset.theme === 'paper' ? 'paper' : 'dark'
+        );
+
         particlesJS('particles-js', {
             particles: {
                 number: {
                     value: window.innerWidth < 768 ? 28 : 48,
                     density: { enable: true, value_area: 1000 }
                 },
-                color: { value: ['#8b5cf6', '#38d9d5', '#d7d2e4'] },
+                color: { value: initialParticleTheme.colors },
                 shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
-                opacity: { value: 0.22, random: true, anim: { enable: false } },
+                opacity: { value: initialParticleTheme.opacity, random: true, anim: { enable: false } },
                 size: { value: 2.4, random: true, anim: { enable: false } },
                 line_linked: {
                     enable: true,
                     distance: 165,
-                    color: '#8b5cf6',
-                    opacity: 0.12,
+                    color: initialParticleTheme.lineColor,
+                    opacity: initialParticleTheme.lineOpacity,
                     width: 1
                 },
                 move: {
@@ -253,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     resize: true
                 },
                 modes: {
-                    grab: { distance: 150, line_linked: { opacity: 0.35 } },
+                    grab: { distance: 150, line_linked: { opacity: initialParticleTheme.grabOpacity } },
                     push: { particles_nb: 2 }
                 }
             },
