@@ -143,61 +143,48 @@ nav.scrolled {
 .nav-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .theme-toggle {
     position: relative;
     z-index: 1002;
     display: grid;
-    width: 48px;
-    height: 28px;
-    margin-left: auto;
-    margin-right: 1.6rem;
+    width: 38px;
+    height: 38px;
+    margin-left: 1.4rem;
     place-items: center;
-    border: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
     background: transparent;
     cursor: pointer;
+    transition: border-color 200ms ease, background 200ms ease, transform 200ms var(--ease-out);
 }
 
-.theme-toggle-track {
-    position: relative;
-    display: block;
-    width: 44px;
-    height: 24px;
-    border: 1px solid var(--line-strong);
-    border-radius: 999px;
-    background: var(--surface-solid);
-    transition: border-color 220ms ease, background 220ms ease;
-}
-
-.theme-toggle-dot {
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--text);
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
-    transition: transform 360ms var(--ease-out), background 220ms ease, box-shadow 220ms ease;
-}
-
-.theme-toggle:hover .theme-toggle-track {
+.theme-toggle:hover {
     border-color: var(--text);
+    background: var(--surface);
+    transform: translateY(-2px);
+}
+
+.theme-icon {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.6;
 }
 
 .theme-toggle:focus-visible {
-    border-radius: 999px;
     outline: 2px solid var(--cyan);
     outline-offset: 3px;
 }
 
-html[data-theme="paper"] .theme-toggle-dot {
-    background: #111111;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
-    transform: translateX(20px);
-}
+.theme-icon-moon { display: none; }
+html[data-theme="paper"] .theme-icon-sun { display: none; }
+html[data-theme="paper"] .theme-icon-moon { display: block; }
 
 .logo h1 {
     font-size: 1.2rem;
@@ -212,6 +199,7 @@ html[data-theme="paper"] .theme-toggle-dot {
     display: flex;
     align-items: center;
     gap: 1.8rem;
+    margin-left: auto;
     list-style: none;
 }
 
@@ -2435,7 +2423,7 @@ html[data-theme="paper"] {
     --line-strong: rgba(17, 17, 17, 0.28);
     --text: #111111;
     --muted: #4e4e4a;
-    --quiet: #73736d;
+    --quiet: #62625d;
     --purple: #111111;
     --purple-light: #343432;
     --cyan: #1d1d1b;
@@ -2500,6 +2488,19 @@ html[data-theme="paper"] .windmill-stage {
     background-size: auto, 36px 36px, 36px 36px, auto;
 }
 
+html[data-theme="paper"] #agritrade .mobile-collage {
+    background:
+        radial-gradient(circle at 50% 26%, rgba(45, 104, 34, 0.11), transparent 42%),
+        radial-gradient(circle at 50% 58%, rgba(0, 0, 0, 0.055), transparent 64%),
+        #e8e8e3;
+}
+
+html[data-theme="paper"] #agritrade .mobile-collage::before {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+}
+
 html[data-theme="paper"] .windmill-stage::after,
 html[data-theme="paper"] .windmill-slide,
 html[data-theme="paper"] .collage-phone {
@@ -2529,6 +2530,21 @@ html[data-theme="paper"] .capability-grid article:hover {
 
 html[data-theme="paper"] .experience-section {
     background: rgba(238, 238, 233, 0.72);
+}
+
+html[data-theme="paper"] .about-section {
+    background:
+        radial-gradient(circle at 15% 30%, rgba(0, 0, 0, 0.055), transparent 25rem),
+        rgba(238, 238, 233, 0.78);
+}
+
+html[data-theme="paper"] .credential-card > span {
+    color: #ffffff;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.72);
+}
+
+html[data-theme="paper"] .credential-card b {
+    color: #e7e7e2;
 }
 
 html[data-theme="paper"] .contact-section {
@@ -2563,11 +2579,6 @@ html[data-theme="paper"] .modal-nav:focus-visible {
     background: #ffffff;
 }
 
-html[data-theme="paper"] img,
-html[data-theme="paper"] #particles-js canvas {
-    filter: grayscale(1);
-}
-
 html[data-theme="paper"] .visual-action,
 html[data-theme="paper"] .archive-media-card > button::after,
 html[data-theme="paper"] .credential-card.credential-pdf::before {
@@ -2582,7 +2593,8 @@ html[data-theme="paper"] .credential-card.credential-pdf::before {
 }
 
 @media (max-width: 768px) {
-    .theme-toggle { margin-right: 0.85rem; }
+    .menu-toggle { margin-left: auto; }
+    .theme-toggle { margin-left: 0.85rem; }
 
     html[data-theme="paper"] .nav-links {
         background: rgba(244, 244, 240, 0.98);
